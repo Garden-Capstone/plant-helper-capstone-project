@@ -24,15 +24,15 @@ export default function Login() {
                 <form className="flex flex-col gap-4 items-center">
                     <div>
                         <div className="mb-2 block">
-                            <Label htmlFor="email1" value="Email" className="text-[#2E8B57]" />
+                            <Label htmlFor="email1" value="Email" className="text-[#2E8B57]"/>
                         </div>
-                        <TextInput className="w-96" id="email1" type="email" placeholder="email" required />
+                        <TextInput className="w-96" id="email1" type="email" placeholder="email" required/>
                     </div>
                     <div>
                         <div className="mb-2 block">
-                            <Label htmlFor="password1" value="Password" className="text-[#2E8B57]" />
+                            <Label htmlFor="password1" value="Password" className="text-[#2E8B57]"/>
                         </div>
-                        <TextInput className="w-96" id="password1" type="password" placeholder="password" required />
+                        <TextInput className="w-96" id="password1" type="password" placeholder="password" required/>
                     </div>
                     <Button className="w-60 mt-10 py-2 bg-[#2E8B57] enabled:hover:bg-[#2c6e49]" type="submit">
                         Sprout Back In!

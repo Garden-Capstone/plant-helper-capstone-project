@@ -34,11 +34,11 @@ export default function Settings() {
     return (
         <>
         {/*Navbar*/}
-        <Navbar fluid rounded className="justify-between">
+        <Navbar fluid rounded className="justify-between bg-[#2c6e49]">
             <Navbar.Brand className="relative">
                 <Link href="/">
                     <svg
-                       className="w-9 h-9 text-gray-800"
+                       className="w-9 h-9 text-[#f9f7ef]"
                        aria-hidden="true"
                        xmlns="http://www.w3.org/2000/svg"
                        width="24"
@@ -57,7 +57,7 @@ export default function Settings() {
 
         <div className="flex-1 flex items-center mr-10 justify-center">
             <Navbar.Brand>
-            <span className="self-center whitespace-nowrap text-2xl font-semibold">
+            <span className="self-center whitespace-nowrap text-2xl text-[#f9f7ef] font-semibold">
               Edit Profile
             </span>
             </Navbar.Brand>
@@ -65,7 +65,7 @@ export default function Settings() {
         </Navbar>
 
         {/* Profile Picture Section */}
-            <div className="flex flex-col items-center justify-center">
+            <div className="flex flex-col items-center justify-center bg-[#f9f7ef]">
                 <div className="flex flex-col items-center mx-14 my-10">
                     <img
                         src={profilePic}
@@ -73,7 +73,7 @@ export default function Settings() {
                         className="w-40 h-40 rounded-full border-2 border-gray-300"/>
                     <div>
                         <Button
-                            className="text-sm mt-12"
+                            className="text-sm mt-12 bg-[#F09999] border-lg border-[#f7b8b7] enabled:hover:bg-[#f7b8b7] focus:ring-2 focus:ring-[#f7b8b7]"
                             aria-label="Change Profile Picture"
                             onClick={() => setShowModal(true)}>
                             Change Picture
@@ -141,7 +141,7 @@ export default function Settings() {
             {/* Save Changes Button */}
             <div className="flex flex-col items-center justify-center">
                 <Button
-                    className="text-sm flex flex-col items-center mx-14 my-10"
+                    className="text-sm flex flex-col items-center bg-[#F09999] enabled:hover:bg-[#f7b8b7] focus:ring-2 focus:ring-[#f7b8b7] mx-14 my-10"
                     aria-label="Save Changes">
                     Save Changes
                 </Button>
