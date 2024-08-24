@@ -5,7 +5,8 @@ import {NewHereGrow} from "@/app/components/newheregrow";
 import NewHere from "@/app/components/newhere";
 import LoginButton from "@/app/components/loginbutton";
 import {SearchBar} from "@/app/components/searchbar";
-import TopSection from "@/app/components/topsection";
+import {TopSection} from "@/app/components/TopSection";
+
 
 
 
@@ -15,7 +16,7 @@ export default function Home () {
             <div className={'bg-[#2E8B57] justify-evenly gap-12 my-5'}>
             <Navbar/>
             </div>
-            {/*<TopSection/>*/}
+            <TopSection/>
             <div className={'flex flex-col justify-center gap-12 my-5 items-center mx-auto'} >
                 <LoginButton/>
             <NewHereGrow/>
