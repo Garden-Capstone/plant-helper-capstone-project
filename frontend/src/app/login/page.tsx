@@ -1,12 +1,9 @@
 "use client"
 import { Button, Card, Checkbox, Label, TextInput } from "flowbite-react"
-import {PiPottedPlantBold} from "react-icons/pi";
-import React from "react";
 
 export default function Login() {
     return (
         <>
-            {/* Background Image */}
             <div
                 className="fixed inset-0 bg-local top-0 left-0 right-0"
                 style={{
@@ -19,43 +16,34 @@ export default function Login() {
 
             <Card className="flex max-w-lg mx-auto mt-20 overflow-hidden bg-white bg-opacity-90 shadow-2xl">
                 <div>
-                    <p className="flex justify-center items-center gap-2 pt-16 text-[#2E8B57] text-4xl font-serif">
-                        <PiPottedPlantBold/> Plant Whisperer
-                    </p>
+                    <p className="flex justify-center pt-16 text-[#2E8B57] text-4xl">Plant Whisperer</p>
                 </div>
-                    <div>
-                        <p className="flex justify-center pb-14 text-[#277529] font-serif">Time to tend to your
-                            plants!</p>
-                    </div>
+                <div>
+                    <p className="flex justify-center pb-14 text-[#3CB371]">Blah Blah Blah</p>
+                </div>
                 <form className="flex flex-col gap-4 items-center">
                     <div>
                         <div className="mb-2 block">
-                            <Label htmlFor="email1" value="Email" className="text-[#277529]"/>
+                            <Label htmlFor="email1" value="Email" className="text-[#2E8B57]"/>
                         </div>
                         <TextInput className="w-96" id="email1" type="email" placeholder="email" required/>
                     </div>
                     <div>
                         <div className="mb-2 block">
-                            <Label htmlFor="password1" value="Password" className="text-[#277529]"/>
+                            <Label htmlFor="password1" value="Password" className="text-[#2E8B57]"/>
                         </div>
                         <TextInput className="w-96" id="password1" type="password" placeholder="password" required/>
                     </div>
-                    <a href="/">
-                        <Button className="w-60 mt-10 py-2 bg-[#2E8B57] enabled:hover:bg-[#2c6e49]" type="button">
-                            Sprout Back In!
-                        </Button>
-                    </a>
+                    <Button className="w-60 mt-10 py-2 bg-[#2E8B57] enabled:hover:bg-[#2c6e49]" type="submit">
+                        Sprout Back In!
+                    </Button>
                     <div className="mt-7 mb-8 text-xs">
                         <span>Don't have an account? </span>
-                        <a
-                            href="/signup"
-                            className="text-[#FF9999] font-semibold hover:text-[#FF6666] hover:underline">
-                            Sign up
-                        </a>
-                        <span> to start growing today!</span>
+                        <span className="text-[#FF9999]">Sign up </span>
+                        <span>to start growing today!</span>
                     </div>
                 </form>
             </Card>
         </>
-    )
+    );
 }
