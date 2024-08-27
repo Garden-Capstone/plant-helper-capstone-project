@@ -1,6 +1,6 @@
 "use client";
 
-import {Tabs, FloatingLabel, Navbar, Footer, Button} from "flowbite-react";
+import {Tabs, FloatingLabel, Navbar, Footer } from "flowbite-react";
 import { FaImage, FaBookReader } from "react-icons/fa";
 import { GiPlantRoots, GiPlantSeed } from "react-icons/gi";
 import { HiBookOpen } from "react-icons/hi";
@@ -245,6 +245,7 @@ export default function Details() {
         {/*Tabs For Mobile View*/}
             <Tabs aria-label="Tabs with icons" className="md:hidden mt-8 mb-1 mx-auto">
                 <Tabs.Item
+                    title="S"
                     active
                     icon={HiBookOpen}>
                     <div className="font-medium text-left">
@@ -277,7 +278,10 @@ export default function Details() {
             </div>
         </Tabs.Item>
         {/*Growing Tab*/}
-        <Tabs.Item icon={GiPlantRoots}>
+        <Tabs.Item
+            title="S"
+            active
+            icon={GiPlantRoots}>
             <div className="font-medium text-gray-800 text-left">
                 <h2 className="text-2xl font-semibold mx-9">Growing</h2>
                 <div className="mt-4 mx-14">
@@ -307,7 +311,10 @@ export default function Details() {
             </div>
         </Tabs.Item>
         {/*Propagation Methods Tab*/}
-                <Tabs.Item icon={GiPlantSeed}>
+                <Tabs.Item
+                    title="S"
+                    active
+                    icon={GiPlantSeed}>
                     <div className="font-medium text-gray-800 text-left">
                         <h2 className="text-2xl font-semibold mx-9">Propagation Methods</h2>
                         <div className="mt-4 mx-14">
@@ -325,7 +332,10 @@ export default function Details() {
                     </div>
                 </Tabs.Item>
         {/*Considerations Tab*/}
-                <Tabs.Item icon={FaBookReader}>
+                <Tabs.Item
+                    title="S"
+                    active
+                    icon={FaBookReader}>
                     <div className="font-medium text-gray-800 text-left">
                         <h2 className="text-2xl font-semibold mx-9">Considerations</h2>
                         <div className="mt-4 mx-14">
@@ -343,7 +353,10 @@ export default function Details() {
                     </div>
                 </Tabs.Item>
         {/*Images Tab*/}
-                <Tabs.Item icon={FaImage}>
+                <Tabs.Item
+                    title="S"
+                    active
+                    icon={FaImage}>
                     <div className="font-medium text-gray-800 text-left">
                         <h2 className="text-2xl font-semibold mb-3 mx-9">Images</h2>
                         <div className="mt-4 mx-16">
