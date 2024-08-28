@@ -1,6 +1,9 @@
 import * as argon2 from 'argon2'
+import crypto from 'crypto'
 import { sign } from 'jsonwebtoken'
-
+export function setActivationToken (): string {
+    return crypto.randomBytes(16).toString('hex')
+}
 
 export function generateJwt (payload: object, signature: string): string {
     const setExpInSecondsSinceEpoch = (currentTimestamp: number): number => {
