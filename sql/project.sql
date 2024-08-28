@@ -6,10 +6,10 @@ DROP table if exists profile;
 
 create TABLE if not exists profile (
     profile_id uuid primary key not null,
-    profile_username varchar (32),
+    profile_username varchar (32) unique ,
     profile_pic_url varchar (255),
     profile_hash char (97),
-    profile_activation_token uuid not null,
+    profile_activation_token char(32),
     profile_goal varchar (255),
     profile_email varchar (255) unique
 );
@@ -22,10 +22,10 @@ create Table if not exists plant (
     plant_image_url varchar (255),
     plant_watering varchar (32),
     plant_sunlight varchar (32),
-    plant_growth_rate varchar,
-    plant_toxicity char,
-    plant_propigaton varchar,
-    plant_maintenance varchar
+    plant_growth_rate varchar (32),
+    plant_toxicity smallint,
+    plant_propagation varchar (64),
+    plant_maintenance varchar (64)
 );
 
 create TABLE if not exists locker (
