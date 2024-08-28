@@ -1,0 +1,48 @@
+DROP table if exists progress;
+DROP table if exists locker;
+DROP table if exists plant;
+DROP table if exists profile;
+
+
+create TABLE if not exists profile (
+    profile_id uuid primary key not null,
+    profile_username varchar (32),
+    profile_pic_url varchar (255),
+    profile_hash char (97),
+    profile_activation_token uuid not null,
+    profile_goal varchar (255),
+    profile_email varchar (255) unique
+);
+
+create Table if not exists plant (
+    plant_id uuid primary key not null,
+    plant_name varchar (97),
+    plant_species char (32),
+    plant_description varchar (255),
+    plant_image_url varchar (255),
+    plant_watering varchar (32),
+    plant_sunlight varchar (32),
+    plant_growth_rate varchar,
+    plant_toxicity char,
+    plant_propigaton varchar,
+    plant_maintenance varchar
+);
+
+create TABLE if not exists locker (
+    locker_id uuid primary key not null,
+    locker_profile_id uuid not null,
+    locker_plant_id uuid not null,
+    locker_image_url varchar (255),
+    locker_name varchar(32),
+    foreign key (locker_profile_id) references profile(profile_id),
+    foreign key (locker_plant_id) references plant(plant_id)
+);
+
+create TABLE if not exists progress (
+    progress_id uuid primary key,
+    progress_locker_id uuid,
+    progress_image_url varchar,
+    progress_note char (32),
+    progress_date_time timestamptz,
+    foreign key (progress_locker_id) references locker(locker_id)
+);
