@@ -6,16 +6,13 @@ const basePath = '/apis/sign-up'
 
 const router = Router()
 
-function signUpProfileController() {
+
+router.route('/').post(signupProfileController)
+
+function activationController() {
 
 }
 
-router.route('/').post(signUpProfileController)
-
-function avtivationController() {
-
-}
-
-router.route('/activation/:activation').get(avtivationController)
+// router.route('/activation/:activation').get(avtivationController)
 
 export const signUpRoute = { basePath, router}
