@@ -81,14 +81,6 @@ export default function Details() {
             <ul className="flex-column space-y space-y-4 text-lg font-medium md:me-4 mb-4 md:mb-0">
                 <li>
                     <button
-                        onClick={() => setActiveTab('Specifications')}
-                        className="inline-flex items-center px-4 py-3 text-[#2C6E49] focus:text-white bg-[#F9F7EF] hover:bg-[#F7B8B7] active:bg-[#F7B8B7] focus:bg-[#F09999] rounded-lg w-80">
-                        <HiBookOpen/>
-                        Specifications
-                    </button>
-                </li>
-                <li>
-                    <button
                         onClick={() => setActiveTab('Growing')}
                         className="inline-flex items-center px-4 py-3 text-[#2C6E49] focus:text-white bg-[#F9F7EF] hover:bg-[#F7B8B7] active:bg-[#F7B8B7] focus:bg-[#F09999] rounded-lg w-80">
                         <GiPlantRoots/>
@@ -123,69 +115,63 @@ export default function Details() {
 
             {/*Description Tab*/}
             {/*Specifications*/}
-            <div className="p-6 rounded-lg w-full">
+            <div className="pb-6 pr-6 pl-6 rounded-lg w-full">
                 <div className="font-medium text-left">
-                    {activeTab === 'Specifications' && (
-                        <>
-                            <div className="mx-10">
-                                <h3 className="text-2xl font-semibold text-[#2C6E49] mb-2">Height</h3>
-                                <p className="text-sm mb-3 text-[#2E8B57]">
-                                    The average height of the plant ranges from 10 inches to 3 feet depending on the
-                                    species.The average height of the plant ranges from 10 inches to 3 feet depending on the
-                                    species.The average height of the plant ranges from 10 inches to 3 feet depending on the
-                                    species. The average height of the plant ranges from 10 inches to 3 feet depending on the
-                                    species.
-                                </p>
-                            </div>
-                            <div className="mt-5 mx-10">
-                                <h3 className="text-2xl font-semibold mb-2 text-[#2C6E49]">Width</h3>
-                                <p className="text-sm mb-3 text-[#2E8B57]">
-                                    The plant can spread out to a width of 1 to 2 feet, requiring adequate space to
-                                    grow. The plant can spread out to a width of 1 to 2 feet, requiring adequate space to
-                                    grow. The plant can spread out to a width of 1 to 2 feet, requiring adequate space to
-                                    grow. The plant can spread out to a width of 1 to 2 feet, requiring adequate space to
-                                    grow. The plant can spread out to a width of 1 to 2 feet, requiring adequate space to
-                                    grow.
-                                </p>
-                            </div>
-                            <div className="mt-5 mx-10">
-                                <h3 className="text-2xl font-semibold mb-2 text-[#2C6E49]">Toxicity</h3>
-                                <p className="text-sm mb-3 text-[#2E8B57]">
-                                    This plant is toxic to pets and should be kept out of reach of cats and dogs. This plant is toxic to pets and should be kept out of reach of cats and dogs. This plant is toxic to pets and should be kept out of reach of cats and dogs. This plant is toxic to pets and should be kept out of reach of cats and dogs. This plant is toxic to pets and should be kept out of reach of cats and dogs. This plant is toxic to pets and should be kept out of reach of cats and dogs.
-                                </p>
-                            </div>
-                            <div className="mt-5 mx-10">
-                                <h3 className="text-2xl font-semibold mb-2 text-[#2C6E49]">Color</h3>
-                                <p className="text-sm mb-3 text-[#2E8B57]">
-                                    The plant has vibrant green leaves with occasional white or yellow variegation. The plant has vibrant green leaves with occasional white or yellow variegation.
-                                </p>
-                            </div>
-                        </>
-                    )}
                     {activeTab === 'Growing' && (
                         <div className="font-medium text-left">
                             <div className="mt-4 mx-10">
                                 <h3 className="text-2xl font-semibold mb-2 text-[#2C6E49]">Watering</h3>
                                 <p className="text-sm mb-3 text-[#2E8B57]">
-                                    Placeholders for watering instructions.
+                                    This plant is toxic to pets and should be kept out of reach of cats and dogs. This
+                                    plant is toxic to pets and should be kept out of reach of cats and dogs. This plant
+                                    is toxic to pets and should be kept out of reach of cats and dogs. This plant is
+                                    toxic to pets and should be kept out of reach of cats and dogs. This plant is toxic
+                                    to pets and should be kept out of reach of cats and dogs. This plant is toxic to
+                                    pets and should be kept out of reach of cats and dogs.
                                 </p>
                             </div>
                             <div className="mt-4 mx-10">
                                 <h3 className="text-2xl font-semibold mb-2 text-[#2C6E49]">Soil</h3>
                                 <p className="text-sm mb-3 text-[#2E8B57]">
-                                    Placeholders for soil instructions.
+                                    This plant is toxic to pets and should be kept out of reach of cats and dogs. This
+                                    plant is toxic to pets and should be kept out of reach of cats and dogs. This plant
+                                    is toxic to pets and should be kept out of reach of cats and dogs. This plant is
+                                    toxic to pets and should be kept out of reach of cats and dogs. This plant is toxic
+                                    to pets and should be kept out of reach of cats and dogs. This plant is toxic to
+                                    pets and should be kept out of reach of cats and dogs.
                                 </p>
                             </div>
                             <div className="mt-4 mx-10">
                                 <h3 className="text-2xl font-semibold mb-2 text-[#2C6E49]">Light</h3>
                                 <p className="text-sm mb-3 text-[#2E8B57]">
-                                    Placeholder for lighting instructions.
+                                    This plant is toxic to pets and should be kept out of reach of cats and dogs. This
+                                    plant is toxic to pets and should be kept out of reach of cats and dogs. This plant
+                                    is toxic to pets and should be kept out of reach of cats and dogs. This plant is
+                                    toxic to pets and should be kept out of reach of cats and dogs. This plant is toxic
+                                    to pets and should be kept out of reach of cats and dogs. This plant is toxic to
+                                    pets and should be kept out of reach of cats and dogs.
                                 </p>
                             </div>
                             <div className="mt-4 mx-10">
                                 <h3 className="text-2xl font-semibold mb-2 text-[#2C6E49]">Temperature</h3>
                                 <p className="text-sm mb-3 text-[#2E8B57]">
-                                    Placeholder for temperature instructions.
+                                    This plant is toxic to pets and should be kept out of reach of cats and dogs. This
+                                    plant is toxic to pets and should be kept out of reach of cats and dogs. This plant
+                                    is toxic to pets and should be kept out of reach of cats and dogs. This plant is
+                                    toxic to pets and should be kept out of reach of cats and dogs. This plant is toxic
+                                    to pets and should be kept out of reach of cats and dogs. This plant is toxic to
+                                    pets and should be kept out of reach of cats and dogs.
+                                </p>
+                            </div>
+                            <div className="mt-5 mx-10">
+                                <h3 className="text-2xl font-semibold mb-2 text-[#2C6E49]">Toxicity</h3>
+                                <p className="text-sm mb-3 text-[#2E8B57]">
+                                    This plant is toxic to pets and should be kept out of reach of cats and dogs. This
+                                    plant is toxic to pets and should be kept out of reach of cats and dogs. This plant
+                                    is toxic to pets and should be kept out of reach of cats and dogs. This plant is
+                                    toxic to pets and should be kept out of reach of cats and dogs. This plant is toxic
+                                    to pets and should be kept out of reach of cats and dogs. This plant is toxic to
+                                    pets and should be kept out of reach of cats and dogs.
                                 </p>
                             </div>
                         </div>
@@ -219,20 +205,6 @@ export default function Details() {
                                 <p className="ttext-sm mb-3 text-[#2E8B57]">
                                     Placeholder for cultural significance of the plant.
                                 </p>
-                            </div>
-                        </div>
-                    )}
-                    {activeTab === 'Images' && (
-                        <div className="font-medium flex justify-center">
-                            <div className="mt-4 mx-16">
-                                <img
-                                    src="https://placehold.co/300x300"
-                                    alt="Placeholder Image"/>
-                            </div>
-                            <div className="mt-4 mx-16">
-                                <img
-                                    src="https://placehold.co/300x300"
-                                    alt="Placeholder Image"/>
                             </div>
                         </div>
                     )}
