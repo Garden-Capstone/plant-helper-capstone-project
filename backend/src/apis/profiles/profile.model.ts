@@ -5,13 +5,11 @@ import { sql } from '../../utils/database.utils'
  * The shape of the private profile that is only used by express. it must never be returned to the controller.
  * @property profileId {sting} the primary key
  * @property profileUsername {varchar} unique
- * @proptery profileName {varchar} the profile's name
  * @property profileImage {varchar} the profile's pic
  * @property profileHash {string|null} the profile's hash
  * @property profileActivationToken {char} the profile's activation
  * @property profileGoal {varchar} the profile's goal
  * @property profileEmail {varchar} unique
-
  **/
 export const PrivateProfileSchema = z.object({
     profileId: z.string({
@@ -50,11 +48,10 @@ export const PrivateProfileSchema = z.object({
         .url({ message: 'please provide a valid profile image url' })
         .max(255, { message: 'profile image url is to long' })
         .nullable(),
-    profileName: z.string()
-        .trim()
-        .min(1, { message: 'please provide a valid profile name (min 1 characters)' })
-        .max(32, { message: 'please provide a valid profile name (max 32 characters)' }),
-    profileUsername: z.string()
+    profileUsername: z.string({
+        required_error: 'profileUsername is required',
+        invalid_type_error: 'please provide a valid profileUsername'
+    })
         .trim()
         .min(1, { message: 'please provide a valid profile username (min 1 characters)' })
         .max(32, { message: 'please provide a valid profile username (max 32 characters)' })
@@ -64,10 +61,23 @@ export type PrivateProfile = z.infer<typeof PrivateProfileSchema>
 
 export async function insertProfile (profile: PrivateProfile): Promise<string> {
 
-const {profileId, profileUsername, profileName, profileImage, profileHash, profileActivationToken, profileGoal, profileEmail} = profile
+const {profileId, profileUsername, profileImage, profileHash, profileActivationToken, profileGoal, profileEmail} = profile
 
-await sql`INSERT INTO {profile_id, profile_username, profile_name, profile_image, profile_hash, profile_activation_token, profile_goal, profile_email) VALUES (gen_random_uuid(), ${profileId}, ${profileUsername}, ${profileName}, ${profileImage}, ${profileHash}, ${profileActivationToken}, ${profileGoal} ${profileEmail}
+await sql`INSERT INTO profile (profile_id, profile_username, profile_image, profile_hash, profile_activation_token, profile_goal, profile_email) VALUES (gen_random_uuid(), ${profileUsername}, ${profileImage}, ${profileHash}, ${profileActivationToken}, ${profileGoal}, ${profileEmail}
 )`
 return 'Profile Successfully Created'
 }
 
+export async function updateProfile (profile: PrivateProfile) : Promise<string> {
+    const { profileId, profileUsername, profileImage, profileHash, profileActivationToken, profileGoal, profileEmail } = profile
+    await sql`UPDATE profile SET profile_username = ${profileUsername}, profile_image = ${profileImage}, profile_hash = ${profileHash}, profile_activation_token = ${profileActivationToken}, profile_goal = ${profileGoal}, profile_email = ${profileEmail} WHERE profile_id = ${profileId}`
+    return 'Profile successfully updated'
+}
+
+export async function selectPrivateProfileByProfileActivationToken (profileActivationToken: string) : Promise<PrivateProfile|null> {
+
+    const rowList = await sql`SELECT profile_id, profile_username, profile_image, profile_hash, profile_activation_token, profile_goal, profile_email FROM profile WHERE profile_activation_token = ${profileActivationToken}`
+
+    const result = PrivateProfileSchema.array().max(1).parse(rowList)
+    return result?.length === 1 ? result[0] : null
+}

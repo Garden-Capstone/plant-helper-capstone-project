@@ -1,18 +1,14 @@
-import express, {Router} from "express";
+import {Router} from "express";
 import {signupProfileController} from "./sign-up.controller";
+import {activationController} from "./activation.controller";
 
 
 const basePath = '/apis/sign-up'
 
 const router = Router()
 
-
 router.route('/').post(signupProfileController)
 
-function activationController() {
-
-}
-
-// router.route('/activation/:activation').get(avtivationController)
+router.route('/activation/:activation').get(activationController)
 
 export const signUpRoute = { basePath, router}

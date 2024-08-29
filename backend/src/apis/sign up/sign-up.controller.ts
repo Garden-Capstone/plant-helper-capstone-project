@@ -17,13 +17,13 @@ export async function signupProfileController (request: Request, response: Respo
         const mailgun: Mailgun = new Mailgun(formData)
         const mailgunClient = mailgun.client({username: 'api', key: process.env.MAILGUN_API_KEY as string})
 
-        const {profileName, profileEmail, profilePassword, profileUsername} = request.body
+        const {profileEmail, profilePassword, profileUsername} = request.body
 
         const profileHash = await setHash(profilePassword)
 
         const profileActivationToken = setActivationToken()
 
-        const profileImageUrl = 'http://placekitten.com/300/300'
+        const profileImage = 'http://placekitten.com/300/300'
 
         const basePath: string = `${request.protocol}://${request.hostname}:8080{request.originalUrl}activation/${profileActivationToken}`
 
@@ -33,15 +33,16 @@ export async function signupProfileController (request: Request, response: Respo
 
         const mailgunMessage = {
             from: `Mailgun Sandbox <postmaster@${process.env.MAILGUN_DOMAIN as string}>`,
+            to: profileEmail,
+            subject: 'One step closer to Sticky Head -- Account Activation',
             html: message
         }
 
         const profile: PrivateProfile = {
             profileId: '',
-            profileName,
             profileActivationToken,
             profileUsername,
-            profileImage: null,
+            profileImage,
             profileGoal: null,
             profileEmail,
             profileHash

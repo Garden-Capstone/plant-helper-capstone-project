@@ -2,7 +2,7 @@ import{z} from 'zod'
 import {PrivateProfileSchema} from "../profiles/profile.model";
 
 export const SignUpProfileSchema = PrivateProfileSchema
-    .omit({ profileId: true, profileHash: true, profileActivationToken: true, profileImage: true, profileGoal: true, profileEmail: true, profileName: true})
+    .omit({ profileId: true, profileHash: true, profileActivationToken: true, profileImage: true, profileGoal: true})
     .extend({
 
         profilePasswordConfirm: z.string({
