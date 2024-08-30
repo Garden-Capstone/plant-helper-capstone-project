@@ -8,6 +8,7 @@ import RedisStore from 'connect-redis'
 import {signUpRoute} from "./apis/sign up/sign-up.route";
 import {signInRoute} from "./apis/sign-in/sign-in.route";
 
+
 // The following class creates the app and instantiates the server
 export class App {
     app: Application
