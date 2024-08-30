@@ -7,6 +7,7 @@ import { createClient,  RedisClientType } from 'redis'
 import RedisStore from 'connect-redis'
 import {signUpRoute} from "./apis/sign up/sign-up.route";
 import {signInRoute} from "./apis/sign-in/sign-in.route";
+import helmet from "helmet";
 
 // The following class creates the app and instantiates the server
 export class App {
@@ -32,7 +33,10 @@ export class App {
     // private method to setting up the middleware to handle json responses, one for dev and one for prod
     private middlewares (): void {
 
+        // marty look at the screen
+
         this.app.use(morgan('dev'))
+        this.app.use(helmet())
         this.app.use(express.json())
         this.app.use(session( {
             store: this.redisStore,
