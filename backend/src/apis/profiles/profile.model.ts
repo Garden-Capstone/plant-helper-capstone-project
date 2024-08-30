@@ -59,6 +59,9 @@ export const PrivateProfileSchema = z.object({
 })
 export type PrivateProfile = z.infer<typeof PrivateProfileSchema>
 
+export const PublicProfileSchema = PrivateProfileSchema.omit({profileHash: true, profileActivationToken: true, profileEmail: true})
+export type PublicProfile = z.infer<typeof PublicProfileSchema>
+
 export async function insertProfile (profile: PrivateProfile): Promise<string> {
 
 const {profileId, profileUsername, profileImage, profileHash, profileActivationToken, profileGoal, profileEmail} = profile
@@ -72,6 +75,14 @@ export async function updateProfile (profile: PrivateProfile) : Promise<string> 
     const { profileId, profileUsername, profileImage, profileHash, profileActivationToken, profileGoal, profileEmail } = profile
     await sql`UPDATE profile SET profile_username = ${profileUsername}, profile_image = ${profileImage}, profile_hash = ${profileHash}, profile_activation_token = ${profileActivationToken}, profile_goal = ${profileGoal}, profile_email = ${profileEmail} WHERE profile_id = ${profileId}`
     return 'Profile successfully updated'
+}
+
+export async function selectPrivateProfileByProfileEmail (profileEmail: string) : Promise<PrivateProfile | null> {
+    const rowList = await sql`SELECT profile_id, profile_username, profile_image, profile_hash, profile_activation_token, profile_goal, profile_email FROM profile WHERE profile_email = ${profileEmail}`
+
+    const result = PrivateProfileSchema.array().max(1).parse(rowList)
+
+    return result?.length === 1 ? result[0] : null
 }
 
 export async function selectPrivateProfileByProfileActivationToken (profileActivationToken: string) : Promise<PrivateProfile|null> {
