@@ -3,3 +3,6 @@
 @tailwind utilities;
 
 
+.navbar-link:hover {
+    color: white !important;
+}
