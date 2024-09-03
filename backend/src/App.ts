@@ -8,6 +8,7 @@ import RedisStore from 'connect-redis'
 import {signUpRoute} from "./apis/sign up/sign-up.route";
 import {signInRoute} from "./apis/sign-in/sign-in.route";
 import helmet from "helmet";
+import {plantRoute} from "./apis/plant/plant.route";
 
 // The following class creates the app and instantiates the server
 export class App {
@@ -35,6 +36,7 @@ export class App {
 
         // marty look at the screen
 
+        this.app.use(plantRoute.basePath, plantRoute.router)
         this.app.use(morgan('dev'))
         this.app.use(helmet())
         this.app.use(express.json())
