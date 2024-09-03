@@ -1,6 +1,19 @@
 import {z} from "zod";
 import {sql} from "../../utils/database.utils";
 
+/*
+* @property plantId {string} the primary key
+* @property plantName {string} the plant name
+* @property plantSpecies {string} the plant species
+* @property plantDescription {string} the plant description
+* @property plantImageUrl {string} the plant Image URL
+* @property plantWatering {string} the plant watering description
+* @property plantSunlight {string} the plant sunlight description
+* @property plantGrowthRate {string} the plant growth rate
+* @property plantToxicity {string} the plant toxicity rating
+* @property plantPropagation {string} the plant propagation methods
+* @property plantMaintenance {string} the plant maintenance level
+* */
 
 export const  PlantSchema = z.object ({
     plantId : z.string({
@@ -75,4 +88,10 @@ export async function selectAllPlants () : Promise<Plant[]> {
     const rowList = <Plant[]>await sql`SELECT plant_id, plant_name, plant_species, plant_description, plant_image_url, plant_watering, plant_sunlight, plant_growth, plant_toxicity, plant_propagation, plant_maintenance FROM plant ORDER BY plant_id DESC`
 
     return PlantSchema.array().parse(rowList)
+}
+
+export async function selectPlantByPlantId(plantId : string): Promise<Plant[]> {
+
+    const rowList = <Plant[]>await sql`SELECT plant_id, plant_name, plant_species, plant_description, plant_image_url, plant_watering, plant_sunlight, plant_growth, plant_toxicity, plant_propagation, plant_maintenance FROM plant WHERE plant_id = ${plantId}`
+
 }

@@ -1,5 +1,5 @@
 import {Router} from "express";
-import {getAllPlants} from "./plant.controller";
+import {getAllPlants, getPlantByPlantId} from "./plant.controller";
 
 
 const basePath = '/apis/plant';
@@ -7,5 +7,7 @@ const basePath = '/apis/plant';
 const router = Router();
 
 router.route('/').get(getAllPlants)
+
+router.route('/:id').get(getPlantByPlantId)
 
 export const plantRoute = {basePath, router}
