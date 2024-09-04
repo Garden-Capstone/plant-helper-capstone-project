@@ -11,13 +11,13 @@ create TABLE if not exists profile (
     profile_hash char (97),
     profile_activation_token char(32),
     profile_goal varchar (255),
-    profile_email varchar (255) unique
+    profile_email varchar (255) unique not null
 );
 
 create Table if not exists plant (
     plant_id uuid primary key not null,
     plant_name varchar (97),
-    plant_species char (32),
+    plant_species char (97),
     plant_description varchar (255),
     plant_image_url varchar (255),
     plant_watering varchar (32),
