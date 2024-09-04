@@ -10,7 +10,6 @@ export async function getAllPlants(request: Request, response: Response) : Promi
 
     try {
         const data = await selectAllPlants()
-
         const status : Status = {status: 200, message: null, data}
         return response.json(status)
     } catch (error) {
