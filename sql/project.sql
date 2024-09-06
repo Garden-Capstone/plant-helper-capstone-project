@@ -39,9 +39,9 @@ create TABLE if not exists locker (
 );
 
 create TABLE if not exists progress (
-    progress_id uuid primary key,
-    progress_locker_id uuid,
-    progress_image_url varchar,
+    progress_id uuid primary key not null ,
+    progress_locker_id uuid not null ,
+    progress_image_url varchar (255),
     progress_note char (32),
     progress_date_time timestamptz,
     foreign key (progress_locker_id) references locker(locker_id)
