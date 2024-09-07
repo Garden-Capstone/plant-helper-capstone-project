@@ -6,6 +6,7 @@ import {
 
 
 
+
 // declaring a basePath for this router
 const basePath = '/apis/progress'
 
@@ -20,6 +21,7 @@ const router = Router();
 
 router.route('/:progressId')
 .get(getProgressByProgressIdController, getProgressByProgressLockerIdController)
+    .post(getProgressByProgressIdController, getProgressByProgressLockerIdController)
 
 
 export const progressRoute = {basePath, router}
