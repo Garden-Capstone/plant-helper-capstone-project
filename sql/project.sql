@@ -46,3 +46,4 @@ create TABLE if not exists progress (
     progress_date_time timestamptz,
     foreign key (progress_locker_id) references locker(locker_id)
 );
+

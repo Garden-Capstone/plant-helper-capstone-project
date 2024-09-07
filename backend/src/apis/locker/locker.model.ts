@@ -8,7 +8,8 @@ export const LockerSchema = z.object({
         required_error: 'Locker ID is required',
         invalid_type_error: 'Please enter a valid Locker ID'
     })
-        .uuid({message: 'Please provide a valid UUID'}),
+        .uuid({message: 'Please provide a valid UUID'})
+        .nullable(),
     lockerProfileId: z.string({
         required_error: 'Locker Profile ID is required',
         invalid_type_error: 'Please enter a valid Locker Profile ID'
@@ -38,15 +39,20 @@ export const LockerSchema = z.object({
 export type Locker = z.infer<typeof LockerSchema>;
 
 
-export async function selectLockerByProfileId (profileId: string) : Promise <Locker | null> {
+export async function selectLockersByProfileId (profileId: string) : Promise <Locker[]> {
     const rowList = await sql`SELECT locker_id, locker_profile_id, locker_plant_id, locker_image_url, locker_name FROM locker WHERE locker_profile_id = ${profileId}`
 
-    const result = LockerSchema.array().max(1).parse(rowList)
+     return LockerSchema.array().parse(rowList)
 
-    return result?.length === 1 ? result[0] : null
-
-    // 1 to 1 relationship
-    // need to add locker creation to profile signup
 }
 
+
+export async function insertLocker (locker : Locker) : Promise <string> {
+
+    const {lockerId, lockerProfileId, lockerPlantId, lockerImageUrl, lockerName} = locker;
+
+    await sql`INSERT INTO locker (locker_id, locker_profile_id, locker_plant_id, locker_image_url, locker_name) VALUES (gen_random_uuid(), ${locker.lockerProfileId}, ${locker.lockerPlantId}, ${lockerImageUrl}, ${lockerName})`;
+
+    return 'Locker Successfully Created.';
+}
 

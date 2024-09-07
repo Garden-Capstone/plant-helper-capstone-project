@@ -10,6 +10,7 @@ import {signInRoute} from "./apis/sign-in/sign-in.route";
 import helmet from "helmet";
 import {plantRoute} from "./apis/plant/plant.route";
 import {imageRoute} from "./apis/image/image.route";
+import {lockerRoute} from "./apis/locker/locker.route";
 
 // The following class creates the app and instantiates the server
 export class App {
@@ -54,6 +55,7 @@ export class App {
         this.app.use(signInRoute.basePath, signInRoute.router)
         this.app.use(plantRoute.basePath, plantRoute.router)
         this.app.use(imageRoute.basePath, imageRoute.router)
+        this.app.use(lockerRoute.basePath, lockerRoute.router)
     }
 
     // starts the server and tells the terminal to post a message that the server is running and on what port
