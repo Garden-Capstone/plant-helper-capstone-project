@@ -1,4 +1,4 @@
-import {Plant} from "../../apis/plant/plant.model";
+import {insertPlant, Plant} from "../../apis/plant/plant.model";
 
 
 async function dataDownloader() {
@@ -22,7 +22,7 @@ async function dataDownloader() {
         plantName: perenualPlant.common_name,
         plantSpecies: perenualPlant.scientific_name,
         plantDescription: perenualPlant.description,
-        plantImageUrl: perenualPlant.original_url,
+        plantImageUrl: perenualPlant.default_image.original_url,
         plantWatering: perenualPlant.watering,
         plantSunlight: perenualPlant.sunlight,
         plantGrowthRate: perenualPlant.growth_rate,
@@ -32,7 +32,7 @@ async function dataDownloader() {
         }
 
         console.log(plant)
-        // insertPlant(plant)
+        await insertPlant(plant)
 
 
 

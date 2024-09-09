@@ -37,7 +37,6 @@ export const  PlantSchema = z.object ({
         required_error: 'Plant Description is required',
         invalid_type_error: 'Please provide a valid Plant Description'
     })
-        .max(255, { message: 'Plant Description is too long.'})
         .nullable(),
     plantImageUrl : z.string({
         required_error: 'Plant Image URL is required',

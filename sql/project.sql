@@ -18,7 +18,7 @@ create Table if not exists plant (
     plant_id uuid primary key not null,
     plant_name varchar (97),
     plant_species jsonb ,
-    plant_description varchar (255),
+    plant_description text,
     plant_image_url varchar (255),
     plant_watering varchar (32),
     plant_sunlight jsonb ,
