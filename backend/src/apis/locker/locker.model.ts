@@ -55,8 +55,10 @@ export async function insertLocker (locker : Locker) : Promise <string> {
     return 'Locker Successfully Created.';
 }
 
-export async function selectLockerByLockerId (lockerId : string) : Promise <Locker[]> {
+export async function selectLockerByLockerId (lockerId : string) : Promise <Locker | null> {
     const rowList = await sql`SELECT locker_id, locker_profile_id, locker_plant_id, locker_image_url, locker_name FROM locker WHERE locker_id = ${lockerId}`
 
-    return LockerSchema.array().parse(rowList)
+    const result = LockerSchema.array().max(1).parse(rowList)
+
+    return result?.length === 1 ? result[0] : null
 }

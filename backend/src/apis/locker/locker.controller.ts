@@ -66,7 +66,7 @@ export async function postLockerController(request : Request, response : Respons
         }
 }
 
-export async function getLockerbyLockerId(request : Request, response : Response) : Promise<Response<Status>> {
+export async function getLockerByLockerId(request : Request, response : Response) : Promise<Response<Status>> {
 
     try {
         const validationResult = z.string({
