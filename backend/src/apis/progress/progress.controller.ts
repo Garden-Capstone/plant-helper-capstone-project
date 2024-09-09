@@ -31,12 +31,16 @@ export async function postProgressController(request: Request, response: Respons
 
         // get the progress content, progressNote, and progressImageURL from the request body
         const {progressNote, progressId, progressImageUrl, progressLockerId } = validationResult.data
-        // todo using the progressLockerId get LockerByLockerId and enforce the lockerProfileId matches the profileId in the session
+        // todo using the progressLockerId  selectLockerByLockerId and enforce the lockerProfileId matches the profileId in the session
+
         // get the profile from the session
         const profile: PublicProfile = request.session.profile as PublicProfile
 
         // set the progress profile id to the profile id from the session
         const progressProfileId: string = profile.profileId as string
+
+       // here is where you get the lockerId
+        //here is where you enforce the lockerProfileId matches progressProfileId
 
         // create a new progress object with the progressProfileId, progressReplyThreadId, progressContent, and progressImageUrl
         const progress: Progress = {
