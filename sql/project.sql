@@ -17,14 +17,14 @@ create TABLE if not exists profile (
 create Table if not exists plant (
     plant_id uuid primary key not null,
     plant_name varchar (97),
-    plant_species char (97),
+    plant_species jsonb ,
     plant_description varchar (255),
     plant_image_url varchar (255),
     plant_watering varchar (32),
-    plant_sunlight varchar (32),
+    plant_sunlight jsonb ,
     plant_growth_rate varchar (32),
     plant_toxicity smallint,
-    plant_propagation varchar (64),
+    plant_propagation jsonb ,
     plant_maintenance varchar (64)
 );
 
