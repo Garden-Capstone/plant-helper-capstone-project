@@ -2,7 +2,7 @@ import {Request, Response} from "express";
 import {Status} from "../../utils/interfaces/Status";
 import {z} from "zod";
 import {zodErrorResponse} from "../../utils/response.utils";
-import {insertLocker, Locker, LockerSchema, selectLockersByLockerId, selectLockersByProfileId} from "./locker.model";
+import {insertLocker, Locker, LockerSchema, selectLockerByLockerId, selectLockersByProfileId} from "./locker.model";
 
 
 export async function getLockersByProfileId(request : Request, response : Response) : Promise<Response<Status>> {
@@ -78,7 +78,7 @@ export async function getLockerbyLockerId(request : Request, response : Response
             return zodErrorResponse(response, validationResult.error)
         }
             const lockerId = validationResult.data
-            const data = await selectLockersByLockerId(lockerId)
+            const data = await selectLockerByLockerId(lockerId)
             return response.json({status: 200, message: null, data})
 
         } catch (error) {

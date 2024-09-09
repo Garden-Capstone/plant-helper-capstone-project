@@ -1,22 +1,22 @@
-import { Router } from 'express';
+import {Router} from "express";
+import {isLoggedInController} from "../../utils/controllers/isLoggedIn.controller";
 import {
     getProgressByProgressIdController,
-  getProgressByProgressLockerIdController
+    getProgressByProgressLockerIdController,
+    postProgressController
 } from "./progress.controller";
 
+const basePath = '/apis/progress';
 
-
-
-// declaring a basePath for this router
-const basePath = '/apis/progress'
-
-
-
-// creating a new router object
 const router = Router();
 
-//define route for this router
+router.route('/progressByProfileId/progress/:profileId')
+router.route('/').post(isLoggedInController, postProgressController)
+router.route('/progressByLockerId/progress/:progressId')
 
+
+
+export const progressRoute = {basePath, router}
 
 
 router.route('/:progressId')
@@ -24,4 +24,3 @@ router.route('/:progressId')
     .post(getProgressByProgressIdController, getProgressByProgressLockerIdController)
 
 
-export const progressRoute = {basePath, router}
