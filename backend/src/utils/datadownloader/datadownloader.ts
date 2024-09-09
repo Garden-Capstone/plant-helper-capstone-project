@@ -1,4 +1,4 @@
-import {insertPlant, Plant} from "../../apis/plant/plant.model";
+import {Plant} from "../../apis/plant/plant.model";
 
 
 async function dataDownloader() {
@@ -31,7 +31,10 @@ async function dataDownloader() {
         plantPropagation: perenualPlant.propagation
         }
 
-        insertPlant(plant)
+        console.log(plant)
+        // insertPlant(plant)
+
+
 
 
     } while (false)

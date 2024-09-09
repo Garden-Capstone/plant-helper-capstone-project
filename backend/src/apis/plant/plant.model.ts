@@ -132,3 +132,4 @@ export async function insertPlant (plant : Plant) : Promise<string> {
 
     return 'Plant successfully added'
 }
+
