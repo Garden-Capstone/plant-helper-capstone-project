@@ -43,7 +43,6 @@ export async function selectLockersByProfileId (profileId: string) : Promise <Lo
     const rowList = await sql`SELECT locker_id, locker_profile_id, locker_plant_id, locker_image_url, locker_name FROM locker WHERE locker_profile_id = ${profileId}`
 
      return LockerSchema.array().parse(rowList)
-
 }
 
 
@@ -56,3 +55,8 @@ export async function insertLocker (locker : Locker) : Promise <string> {
     return 'Locker Successfully Created.';
 }
 
+export async function selectLockersByLockerId (lockerId : string) : Promise <Locker[]> {
+    const rowList = await sql`SELECT locker_id, locker_profile_id, locker_plant_id, locker_image_url, locker_name FROM locker WHERE locker_id = ${lockerId}`
+
+    return LockerSchema.array().parse(rowList)
+}
