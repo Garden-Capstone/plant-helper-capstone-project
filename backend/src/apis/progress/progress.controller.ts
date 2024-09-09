@@ -10,6 +10,7 @@ import {Response, Request} from "express";
 import {Status} from "../../utils/interfaces/Status";
 import {zodErrorResponse} from "../../utils/response.utils";
 import {PublicProfile} from "../profiles/profile.model";
+import {selectLockerByLockerId} from "../locker/locker.model";
 
 /**
  * Posts new progress to the database and returns a status. If successful, the status will contain the message "progress created successfully." If unsuccessful, the status will contain the message "Error creating progress. Try again.".
@@ -31,7 +32,6 @@ export async function postProgressController(request: Request, response: Respons
 
         // get the progress content, progressNote, and progressImageURL from the request body
         const {progressNote, progressId, progressImageUrl, progressLockerId } = validationResult.data
-        // todo using the progressLockerId  selectLockerByLockerId and enforce the lockerProfileId matches the profileId in the session
 
         // get the profile from the session
         const profile: PublicProfile = request.session.profile as PublicProfile
@@ -39,8 +39,11 @@ export async function postProgressController(request: Request, response: Respons
         // set the progress profile id to the profile id from the session
         const progressProfileId: string = profile.profileId as string
 
-       // here is where you get the lockerId
-        //here is where you enforce the lockerProfileId matches progressProfileId
+       const locker = await selectLockerByLockerId (progressLockerId)
+        if(!locker.lockerProfileId === profile.profileId) {
+            return response.json({status: 401, message: 'you must be logged in to add progress', data: null})
+        }
+
 
         // create a new progress object with the progressProfileId, progressReplyThreadId, progressContent, and progressImageUrl
         const progress: Progress = {
