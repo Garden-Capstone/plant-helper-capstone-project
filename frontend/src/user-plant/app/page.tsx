@@ -1,8 +1,8 @@
 "use client"
 
-import PlantNavBar from "@/components/navigation";
-import {Plantimage} from "@/components/plantimage";
-import PlantDescription from "@/components/plantdescription";
+import PlantNavBar from "@/user-plant/component/navigation";
+import {Plantimage} from "@/user-plant/component/plantimage";
+import PlantDescription from "@/user-plant/component/plantdescription";
 
 export default function Home() {
 
