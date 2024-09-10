@@ -3,7 +3,7 @@ import {insertPlant, Plant} from "../../apis/plant/plant.model";
 
 async function dataDownloader() {
 
-    let page = 1
+    let page = 2
     do {
         let data = await fetch(`https://perenual.com/api/species-list?key=${process.env.PERENUAL_API_KEY}&indoor=1&page=${page}`).then(res => res.json())
 
@@ -12,32 +12,33 @@ async function dataDownloader() {
         console.log(data.data)
         console.log(data.data.length)
 
-        let perenualPlant = await fetch(`https://perenual.com/api/species/details/${data.data[0].id}?key=${process.env.PERENUAL_API_KEY}`).then(res => res.json())
-
-        console.log(perenualPlant)
+        for (let item of data.data) {
 
 
-        const plant : Plant = {
-        plantId: '',
-        plantName: perenualPlant.common_name,
-        plantSpecies: perenualPlant.scientific_name,
-        plantDescription: perenualPlant.description,
-        plantImageUrl: perenualPlant.default_image.original_url,
-        plantWatering: perenualPlant.watering,
-        plantSunlight: perenualPlant.sunlight,
-        plantGrowthRate: perenualPlant.growth_rate,
-        plantToxicity: perenualPlant.poisonous_to_pets || perenualPlant.poisonous_to_humans,
-        plantMaintenance: perenualPlant.maintenance,
-        plantPropagation: perenualPlant.propagation
+            let perenualPlant = await fetch(`https://perenual.com/api/species/details/${item.id}?key=${process.env.PERENUAL_API_KEY}`).then(res => res.json())
+
+            console.log(perenualPlant)
+            if (perenualPlant.default_image === null) continue
+
+            const plant: Plant = {
+                plantId: '',
+                plantName: perenualPlant.common_name,
+                plantSpecies: perenualPlant.scientific_name,
+                plantDescription: perenualPlant.description,
+                plantImageUrl: perenualPlant.default_image.original_url,
+                plantWatering: perenualPlant.watering,
+                plantSunlight: perenualPlant.sunlight,
+                plantGrowthRate: perenualPlant.growth_rate,
+                plantToxicity: perenualPlant.poisonous_to_pets || perenualPlant.poisonous_to_humans,
+                plantMaintenance: perenualPlant.maintenance,
+                plantPropagation: perenualPlant.propagation
+            }
+
+            console.log(plant)
+            await insertPlant(plant)
         }
 
-        console.log(plant)
-        await insertPlant(plant)
-
-
-
-
-    } while (false)
+    } while (page < 6)
 }
 
 dataDownloader().catch(error => console.error(error))
