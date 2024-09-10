@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Button, Navbar, Modal } from "flowbite-react";
-import { Label, TextInput } from "flowbite-react";
+import { Label } from "flowbite-react";
 import Link from "next/link";
 
 
@@ -28,7 +28,7 @@ export default function Settings() {
     ];
 
     {/*This code is for the picture selection*/}
-    const handlePictureSelect = (url) => {
+    const handlePictureSelect = ({url}: { url: any }) => {
         setProfilePic(url);
         setShowModal(false);
     };
@@ -56,13 +56,10 @@ export default function Settings() {
                         </svg>
                     </Link>
                 </Navbar.Brand>
-
                 <div className="flex-1 flex items-center mr-7 justify-center">
-                    <Navbar.Brand>
-            <span className="self-center whitespace-nowrap text-2xl text-[#f9f7ef] font-semibold">
-              Settings
-            </span>
-                    </Navbar.Brand>
+                <Navbar.Brand>
+                    <span className="self-center whitespace-nowrap text-2xl text-[#f9f7ef] font-semibold">Settings</span>
+                </Navbar.Brand>
                 </div>
             </Navbar>
 
@@ -83,7 +80,6 @@ export default function Settings() {
                     </div>
                 </div>
             </div>
-
             {/* Picture Selection Modal */}
             <Modal show={showModal} onClose={() => setShowModal(false)}>
                 <Modal.Header className="bg-[#f9f7ef] text-[#2c6e49]">Select a Profile Picture</Modal.Header>
@@ -95,13 +91,12 @@ export default function Settings() {
                                 src={url}
                                 alt={`Profile option ${index + 1}`}
                                 className="w-20 h-20 cursor-pointer border-2 border-[#f9f7ef] rounded-full"
-                                onClick={() => handlePictureSelect(url)}
+                                onClick={() => handlePictureSelect({url: url})}
                             />
                         ))}
                     </div>
                 </Modal.Body>
             </Modal>
-
             {/* Form Section */}
             <div className="bg-[#f9f7ef]">
             <div className="flex max-w-xl flex-col mx-auto gap-7 bg-[#f9f7ef]">
@@ -114,7 +109,6 @@ export default function Settings() {
                         className="p-2 border border-[#f9f7ef] bg-white rounded-lg w-full h-11 resize-none overflow-hidden"
                         placeholder="Enter first name here.."/>
                 </div>
-
                 <div>
                     <div className="mb-2 block">
                         <Label htmlFor="small" className="text-md" value="Last Name"/>
@@ -124,7 +118,6 @@ export default function Settings() {
                         className="p-2 border-[#f9f7ef] bg-white rounded-lg w-full h-11 resize-none overflow-hidden"
                         placeholder="Enter last name here.."/>
                 </div>
-
                 <div>
                     <div className="mb-2 block">
                         <Label htmlFor="small" className="text-md" value="Email"/>
@@ -132,8 +125,7 @@ export default function Settings() {
                     <textarea
                         id="small"
                         className="p-2 border rounded-lg w-full h-11 bg-white border-[#f9f7ef] resize-none overflow-hidden"
-                        placeholder="Email place holder..."
-                    />
+                        placeholder="Email place holder..."/>
                 </div>
 
                 <div>
@@ -143,10 +135,8 @@ export default function Settings() {
                     <textarea
                         id="small"
                         className="p-2 border rounded-lg w-full h-11 bg-white border-[#f9f7ef] resize-none overflow-hidden"
-                        placeholder="..............."
-                    />
+                        placeholder="..............."/>
                 </div>
-
                 <div>
                     <div className="mb-2 block">
                         <Label htmlFor="small" className="text-md" value=" Confirm Password*"/>
@@ -154,10 +144,8 @@ export default function Settings() {
                     <textarea
                         id="small"
                         className="p-2 border rounded-lg w-full h-11 bg-white border-[#f9f7ef] resize-none overflow-hidden"
-                        placeholder="..............."
-                    />
+                        placeholder="..............."/>
                 </div>
-
                 <div>
                     <div className="mb-2 block">
                         <Label
@@ -172,8 +160,6 @@ export default function Settings() {
                 </div>
             </div>
             </div>
-
-
             {/* Save Changes Button */}
             <div className="flex flex-col items-center justify-center bg-[#f9f7ef]">
                 <Button
@@ -182,7 +168,6 @@ export default function Settings() {
                     Save Changes
                 </Button>
             </div>
-
             {/* Log Out Button */}
             <div className="flex flex-col items-center justify-center bg-[#f9f7ef]">
                 <Link href="/login">
