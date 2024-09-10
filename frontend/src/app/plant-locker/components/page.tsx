@@ -3,7 +3,7 @@
 import PlantNavBar from "@/app/plant-locker/components/lockernavigation";
 import {UserPlant} from "@/app/plant-locker/components/userplant";
 
-export default function Home() {
+export default function PlantLocker() {
 
 const plantdata = [
     {
