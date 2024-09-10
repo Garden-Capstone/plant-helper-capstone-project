@@ -14,7 +14,6 @@ export default function Login() {
                     zIndex: '-1'
                 }}
             ></div>
-
             <Card className="flex max-w-lg mx-auto mt-20 overflow-hidden bg-white bg-opacity-90 shadow-2xl">
                 <div className="flex justify-center pt-16 text-[#2E8B57] text-5xl font-serif">
                     <PiPottedPlantBold className="text-[#2E8B57]"/>
@@ -22,17 +21,24 @@ export default function Login() {
                 </div>
                 <div>
                     <p className="flex justify-center pb-14 text-[#2E8B57] font-bold">Replanting Your Garden Goals? Log In!</p>
+                <div>
+                    <p className="flex justify-center pt-16 text-[#2E8B57] text-4xl">Plant Whisperer</p>
+                </div>
+                <div>
+                    <p className="flex justify-center pb-14 text-[#3CB371]">Blah Blah Blah</p>
                 </div>
                 <form className="flex flex-col gap-4 items-center">
                     <div>
                         <div className="mb-2 block">
                             <Label htmlFor="email1" value="Email" className="text-[#2E8B57] text-md font-bold"/>
+                            <Label htmlFor="email1" value="Email" className="text-[#2E8B57]"/>
                         </div>
                         <TextInput className="w-96" id="email1" type="email" placeholder="email" required/>
                     </div>
                     <div>
                         <div className="mb-2 block">
                             <Label htmlFor="password1" value="Password" className="text-[#2E8B57] text-md font-bold"/>
+                            <Label htmlFor="password1" value="Password" className="text-[#2E8B57]"/>
                         </div>
                         <TextInput className="w-96" id="password1" type="password" placeholder="password" required/>
                     </div>
@@ -43,8 +49,14 @@ export default function Login() {
                         <span>Don't have an account? </span>
                         <a href="/" className="text-[#FF9999] hover:text-[#f7b8b7] font-bold">Sign up </a>
                         <span>and Dig In!</span>
+                    <div className="mt-7 mb-8 text-xs">
+                        <span>Don't have an account? </span>
+                        <span className="text-[#FF9999]">Sign up </span>
+                        <span>to start growing today!</span>
+                    </div>
                     </div>
                 </form>
+                </div>
             </Card>
         </>
     );
