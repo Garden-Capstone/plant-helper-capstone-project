@@ -1,7 +1,7 @@
 "use client"
 
-import {PlantCard} from '@/app/components/plantcard.tsx/'
-import {SearchNavBar} from "@/app/components/navigation";
+import {PlantCard} from '@/search-results/app/components/plantcard'
+import {SearchNavBar} from "@/search-results/app/components/navigation";
 
 
 

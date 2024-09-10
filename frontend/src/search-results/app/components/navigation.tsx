@@ -8,7 +8,7 @@ export function SearchNavBar () {
 
             <nav className="bg-[#3CB371] border-gray-200 shadow-md">
                 <div className="max-w-screen-md mx-8 flex flex-wrap items-center justify-between md:container md:mx-auto pt-8 pb-8">
-                    <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
+                    <a href="/frontend/public" className="flex items-center space-x-3 rtl:space-x-reverse">
                         <span
                             className="self-center text-3xl md:text-5xl text-[#f7b8b7] font-semibold whitespace-nowrap italic">Plant Whisperer</span>
                     </a>
