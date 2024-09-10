@@ -31,13 +31,12 @@ export const  PlantSchema = z.object ({
         required_error: 'Plant Species is required',
         invalid_type_error: 'Please provide a valid Plant Species'
     })
-        .max(97, {message : 'Plant Species is too long.'})
+        .array()
         .nullable(),
     plantDescription : z.string({
         required_error: 'Plant Description is required',
         invalid_type_error: 'Please provide a valid Plant Description'
     })
-        .max(255, { message: 'Plant Description is too long.'})
         .nullable(),
     plantImageUrl : z.string({
         required_error: 'Plant Image URL is required',
@@ -54,7 +53,7 @@ export const  PlantSchema = z.object ({
         required_error: 'Plant Sunlight is required',
         invalid_type_error: 'Please provide valid Plant Sunlight'
     })
-        .max(32, { message: 'Plant Sunlight is too long.'})
+        .array()
         .nullable(),
     plantGrowthRate : z.string({
         required_error: 'Plant Growth Rate is required',
@@ -72,7 +71,7 @@ export const  PlantSchema = z.object ({
         required_error: 'Plant Propagation is required',
         invalid_type_error: 'Please provide valid Plant Propagation'
     })
-        .max(64, { message: 'Plant Propagation is too long.'})
+        .array()
         .nullable(),
     plantMaintenance : z.string({
         required_error: 'Plant Maintenance is required',
@@ -112,3 +111,24 @@ export async function selectPlantsByPlantName(plantName : string): Promise<Plant
     const rowList = <Plant[]>await sql`SELECT plant_id, plant_name, plant_species, plant_description, plant_image_url, plant_watering, plant_sunlight, plant_growth, plant_toxicity, plant_propagation, plant_maintenance FROM plant WHERE plant_name = ${plantName}`
     return PlantSchema.array().parse(rowList)
 }
+
+export async function insertPlant (plant : Plant) : Promise<string> {
+
+    const {
+        plantName,
+        plantSpecies,
+        plantDescription,
+        plantImageUrl,
+        plantWatering,
+        plantSunlight,
+        plantGrowthRate,
+        plantToxicity,
+        plantPropagation,
+        plantMaintenance,
+    } = plant;
+
+    await sql`INSERT INTO plant (plant_id, plant_name, plant_species, plant_description, plant_image_url, plant_watering, plant_sunlight, plant_growth_rate, plant_toxicity, plant_propagation, plant_maintenance) VALUES (gen_random_uuid(), ${plantName}, ${plantSpecies}, ${plantDescription}, ${plantImageUrl}, ${plantWatering}, ${plantSunlight}, ${plantGrowthRate}, ${plantToxicity}, ${plantPropagation}, ${plantMaintenance})`
+
+    return 'Plant successfully added'
+}
+
