@@ -2,4 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-
+/*Hover class for navbar link in plant-details page*/
+.navbar-link:hover {
+    color: #FFEC86 !important;
+    font-weight: bold;
+}
