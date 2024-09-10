@@ -13,7 +13,7 @@ export function UserPlant(props:Props) {
 
     return (
         <>
-            <a href='/' className=''>
+            <a href='/frontend/public' className=''>
                 <section className='border-0 max-w-sm grid grid-row-2 mx-4 shadow-md p-5 rounded-2xl border-black'>
                     <div className='rounded-lg '>
                             <img className='rounded-2xl h-96 w-full' src={props.userplant.image} alt={props.userplant.alt}/>

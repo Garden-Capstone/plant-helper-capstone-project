@@ -1,7 +1,7 @@
 "use client"
 
-import PlantNavBar from "@/components/navigation";
-import {UserPlant} from "@/components/userplant";
+import PlantNavBar from "@/plant-locker/components/navigation";
+import {UserPlant} from "@/plant-locker/components/userplant";
 
 export default function Home() {
 
