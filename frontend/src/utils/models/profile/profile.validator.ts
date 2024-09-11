@@ -20,7 +20,7 @@ export const ProfileSchema = z.object({
         .url({ message: 'please provide a valid profile image url'})
         .max(255, { message: 'profile image url is too long'})
         .nullable(),
-profileUserName: z.string ({required_error: 'profile user name is required', invalid_type_error: 'please provide a valid profile user name'})
+profileUsername: z.string ({required_error: 'profile user name is required', invalid_type_error: 'please provide a valid profile user name'})
     .trim()
     .min(1, { message: 'please provide a valid profile user name (min 1 characters)'})
     .max(32, { message: 'please provide a valid profile user name (max 32 characters)'})

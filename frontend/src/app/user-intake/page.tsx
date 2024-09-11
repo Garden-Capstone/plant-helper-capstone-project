@@ -34,7 +34,7 @@ type SignUp = z.infer< typeof SignUpSchema>
 export default function Page() {
             const initialValues = {
                 profileEmail: '',
-                profileUserName: '',
+                profileUsername: '',
                 profilePassword: '',
                 profilePasswordConfirm: ''
             }
@@ -91,14 +91,14 @@ export function SignUpFormContent(props: FormikProps<SignUp>) {
            <form onSubmit={handleSubmit} className="flex min-h-auto gap-4 min-w-full flex-col grow">
                <div>
                        <div className="mb-2 block">
-                        <label htmlFor="email1"/>
+                        <Label htmlFor="profileEmail" value="Email"/>
                        </div>
 
                    <TextInput
                        onChange={handleChange}
                        onBlur={handleBlur}
-                       autoComplete='email'
-                       id="email1"
+                       autoComplete='profileEmail'
+                       id="profileEmail"
                        name={'profileEmail'}
                        type="email"
                        value={values.profileEmail}
@@ -107,22 +107,22 @@ export function SignUpFormContent(props: FormikProps<SignUp>) {
                </div>
                <div>
                     <div className="md-2 block">
-                         <Label htmlFor="profileName" value="name"/>
+                         <Label htmlFor="profileUsername" value="User Name"/>
                     </div>
                     <TextInput
                          onChange={handleChange}
                          onBlur={handleBlur}
                          autoComplete='username'
-                         id="profileName"
-                         name={'profileName'}
+                         id="profileUsername"
+                         name={'profileUsername'}
                          type="text"
-                         value={values.profileUserName}
+                         value={values.profileUsername}
                      />
-                    <DisplayError errors={errors} touched={touched} field={'profileName'}/>
+                    <DisplayError errors={errors} touched={touched} field={'profileUsername'}/>
                </div>
                <div>
                     <div className="mb-2 block">
-                            <Label htmlFor="profilePassword" value="password"/>
+                            <Label htmlFor="profilePassword" value="Password"/>
                     </div>
                      <TextInput
                             onChange={handleChange}
@@ -137,14 +137,14 @@ export function SignUpFormContent(props: FormikProps<SignUp>) {
                 </div>
                 <div>
                     <div className="mb-2 block">
-                            <Label htmlFor="profilePasswordConfirm" value="password confirm"/>
+                            <Label htmlFor="profilePasswordConfirm" value="Password Confirm"/>
                     </div>
                     <TextInput
                         value={values.profilePasswordConfirm}
                         onChange={handleChange}
                         onBlur={handleBlur}
                         id="profilePasswordConfirm"
-                        name="profilePasswordConfim=rm"
+                        name="profilePasswordConfirm"
                         autoComplete={'new-password confirm'} type="password"
                     />
                     <DisplayError errors={errors} touched={touched} field={'profilePasswordConfirm'}/>
