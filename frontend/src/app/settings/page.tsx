@@ -80,7 +80,6 @@ export default function Settings() {
 >>>>>>> static-settings
                 </div>
             </Navbar>
-
             {/* Profile Picture Section */}
             <div className="flex flex-col items-center justify-center bg-[#f9f7ef]">
                 <div className="flex flex-col items-center mx-14 my-10">
