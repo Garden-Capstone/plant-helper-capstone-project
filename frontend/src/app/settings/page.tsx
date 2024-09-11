@@ -1,11 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Button, Navbar, Modal } from "flowbite-react";
-<<<<<<< HEAD
-import { Label, TextInput } from "flowbite-react";
-=======
 import { Label } from "flowbite-react";
->>>>>>> static-settings
 import Link from "next/link";
 
 
@@ -32,11 +28,7 @@ export default function Settings() {
     ];
 
     {/*This code is for the picture selection*/}
-<<<<<<< HEAD
-    const handlePictureSelect = (url) => {
-=======
     const handlePictureSelect = ({url}: { url: any }) => {
->>>>>>> static-settings
         setProfilePic(url);
         setShowModal(false);
     };
@@ -64,22 +56,13 @@ export default function Settings() {
                         </svg>
                     </Link>
                 </Navbar.Brand>
-<<<<<<< HEAD
-
                 <div className="flex-1 flex items-center mr-7 justify-center">
                     <Navbar.Brand>
-            <span className="self-center whitespace-nowrap text-2xl text-[#f9f7ef] font-semibold">
-              Settings
-            </span>
+                        <span className="self-center whitespace-nowrap text-2xl text-[#f9f7ef] font-semibold">Settings</span>
                     </Navbar.Brand>
-=======
-                <div className="flex-1 flex items-center mr-7 justify-center">
-                <Navbar.Brand>
-                    <span className="self-center whitespace-nowrap text-2xl text-[#f9f7ef] font-semibold">Settings</span>
-                </Navbar.Brand>
->>>>>>> static-settings
                 </div>
             </Navbar>
+
             {/* Profile Picture Section */}
             <div className="flex flex-col items-center justify-center bg-[#f9f7ef]">
                 <div className="flex flex-col items-center mx-14 my-10">
@@ -97,10 +80,6 @@ export default function Settings() {
                     </div>
                 </div>
             </div>
-<<<<<<< HEAD
-
-=======
->>>>>>> static-settings
             {/* Picture Selection Modal */}
             <Modal show={showModal} onClose={() => setShowModal(false)}>
                 <Modal.Header className="bg-[#f9f7ef] text-[#2c6e49]">Select a Profile Picture</Modal.Header>
@@ -112,18 +91,12 @@ export default function Settings() {
                                 src={url}
                                 alt={`Profile option ${index + 1}`}
                                 className="w-20 h-20 cursor-pointer border-2 border-[#f9f7ef] rounded-full"
-<<<<<<< HEAD
-                                onClick={() => handlePictureSelect(url)}
-=======
                                 onClick={() => handlePictureSelect({url: url})}
->>>>>>> static-settings
                             />
                         ))}
                     </div>
                 </Modal.Body>
             </Modal>
-<<<<<<< HEAD
-
             {/* Form Section */}
             <div className="bg-[#f9f7ef]">
                 <div className="flex max-w-xl flex-col mx-auto gap-7 bg-[#f9f7ef]">
@@ -136,7 +109,6 @@ export default function Settings() {
                             className="p-2 border border-[#f9f7ef] bg-white rounded-lg w-full h-11 resize-none overflow-hidden"
                             placeholder="Enter first name here.."/>
                     </div>
-
                     <div>
                         <div className="mb-2 block">
                             <Label htmlFor="small" className="text-md" value="Last Name"/>
@@ -146,7 +118,6 @@ export default function Settings() {
                             className="p-2 border-[#f9f7ef] bg-white rounded-lg w-full h-11 resize-none overflow-hidden"
                             placeholder="Enter last name here.."/>
                     </div>
-
                     <div>
                         <div className="mb-2 block">
                             <Label htmlFor="small" className="text-md" value="Email"/>
@@ -154,8 +125,7 @@ export default function Settings() {
                         <textarea
                             id="small"
                             className="p-2 border rounded-lg w-full h-11 bg-white border-[#f9f7ef] resize-none overflow-hidden"
-                            placeholder="Email place holder..."
-                        />
+                            placeholder="Email place holder..."/>
                     </div>
 
                     <div>
@@ -165,10 +135,8 @@ export default function Settings() {
                         <textarea
                             id="small"
                             className="p-2 border rounded-lg w-full h-11 bg-white border-[#f9f7ef] resize-none overflow-hidden"
-                            placeholder="..............."
-                        />
+                            placeholder="..............."/>
                     </div>
-
                     <div>
                         <div className="mb-2 block">
                             <Label htmlFor="small" className="text-md" value=" Confirm Password*"/>
@@ -176,10 +144,8 @@ export default function Settings() {
                         <textarea
                             id="small"
                             className="p-2 border rounded-lg w-full h-11 bg-white border-[#f9f7ef] resize-none overflow-hidden"
-                            placeholder="..............."
-                        />
+                            placeholder="..............."/>
                     </div>
-
                     <div>
                         <div className="mb-2 block">
                             <Label
@@ -194,73 +160,6 @@ export default function Settings() {
                     </div>
                 </div>
             </div>
-
-
-=======
-            {/* Form Section */}
-            <div className="bg-[#f9f7ef]">
-            <div className="flex max-w-xl flex-col mx-auto gap-7 bg-[#f9f7ef]">
-                <div>
-                    <div className="mb-2 block">
-                        <Label htmlFor="small" className="text-md" value="First Name"/>
-                    </div>
-                    <textarea
-                        id="small"
-                        className="p-2 border border-[#f9f7ef] bg-white rounded-lg w-full h-11 resize-none overflow-hidden"
-                        placeholder="Enter first name here.."/>
-                </div>
-                <div>
-                    <div className="mb-2 block">
-                        <Label htmlFor="small" className="text-md" value="Last Name"/>
-                    </div>
-                    <textarea
-                        id="small"
-                        className="p-2 border-[#f9f7ef] bg-white rounded-lg w-full h-11 resize-none overflow-hidden"
-                        placeholder="Enter last name here.."/>
-                </div>
-                <div>
-                    <div className="mb-2 block">
-                        <Label htmlFor="small" className="text-md" value="Email"/>
-                    </div>
-                    <textarea
-                        id="small"
-                        className="p-2 border rounded-lg w-full h-11 bg-white border-[#f9f7ef] resize-none overflow-hidden"
-                        placeholder="Email place holder..."/>
-                </div>
-
-                <div>
-                    <div className="mb-2 block">
-                        <Label htmlFor="small" className="text-md" value=" New Password*"/>
-                    </div>
-                    <textarea
-                        id="small"
-                        className="p-2 border rounded-lg w-full h-11 bg-white border-[#f9f7ef] resize-none overflow-hidden"
-                        placeholder="..............."/>
-                </div>
-                <div>
-                    <div className="mb-2 block">
-                        <Label htmlFor="small" className="text-md" value=" Confirm Password*"/>
-                    </div>
-                    <textarea
-                        id="small"
-                        className="p-2 border rounded-lg w-full h-11 bg-white border-[#f9f7ef] resize-none overflow-hidden"
-                        placeholder="..............."/>
-                </div>
-                <div>
-                    <div className="mb-2 block">
-                        <Label
-                            htmlFor="large"
-                            className="text-md"
-                            value="What are your plant goals?"/>
-                    </div>
-                    <textarea
-                        id="large"
-                        className="p-4 mb-4 rounded-lg border w-full h-32 bg-white border-[#f9f7ef] resize-none overflow-hidden"
-                        placeholder="Enter your goals here..."/>
-                </div>
-            </div>
-            </div>
->>>>>>> static-settings
             {/* Save Changes Button */}
             <div className="flex flex-col items-center justify-center bg-[#f9f7ef]">
                 <Button
@@ -269,8 +168,6 @@ export default function Settings() {
                     Save Changes
                 </Button>
             </div>
-<<<<<<< HEAD
-
             {/* Log Out Button */}
             <div className="flex flex-col items-center justify-center bg-[#f9f7ef]">
                 <Link href="/login">
@@ -279,22 +176,8 @@ export default function Settings() {
                         aria-label="Log Out">
                         Log Out
                     </Button>
-=======
-            {/* Log Out Button */}
-            <div className="flex flex-col items-center justify-center bg-[#f9f7ef]">
-                <Link href="/login">
-                <Button
-                    className="text-sm flex flex-col items-center bg-[#DAA520] enabled:hover:bg-[#E5C062] focus:ring-2 focus:ring-[#E5C062] mx-14 mt-10 mb-14"
-                    aria-label="Log Out">
-                    Log Out
-                </Button>
->>>>>>> static-settings
                 </Link>
             </div>
         </>
     );
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> static-settings
