@@ -100,16 +100,23 @@ export async function selectPlantByPlantId(plantId : string): Promise<Plant | nu
 
 }
 
-export async function selectPlantByPlantName(plantName : string): Promise<Plant[]> {
-    const rowList = <Plant[]>await sql`SELECT plant_id, plant_name, plant_species, plant_description, plant_image_url, plant_watering, plant_sunlight, plant_growth, plant_toxicity, plant_propagation, plant_maintenance FROM plant WHERE plant_name = ${plantName}`
-
-    return PlantSchema.array().parse(rowList)
-
-}
+// export async function selectPlantByPlantName(plantName : string): Promise<Plant[]> {
+//     const rowList = <Plant[]>await sql`SELECT plant_id, plant_name, plant_species, plant_description, plant_image_url, plant_watering, plant_sunlight, plant_growth, plant_toxicity, plant_propagation, plant_maintenance FROM plant WHERE plant_name = ${plantName}`
+//
+//     return PlantSchema.array().parse(rowList)
+// }
 
 export async function selectPlantsByPlantName(plantName : string): Promise<Plant[]> {
     const rowList = <Plant[]>await sql`SELECT plant_id, plant_name, plant_species, plant_description, plant_image_url, plant_watering, plant_sunlight, plant_growth, plant_toxicity, plant_propagation, plant_maintenance FROM plant WHERE plant_name = ${plantName}`
     return PlantSchema.array().parse(rowList)
+
+}
+
+export async function selectPlantByPlantSpecies (plantSpecies : string): Promise<Plant | null> {
+    const rowList = <Plant[]>await sql`SELECT plant_id, plant_name, plant_species, plant_description, plant_image_url, plant_watering, plant_sunlight, plant_growth, plant_toxicity, plant_propagation, plant_maintenance FROM plant WHERE plant_species = ${plantSpecies} `
+    const result = PlantSchema.array().max(1).parse(rowList)
+
+    return result?.length === 1 ? result[0] : null
 }
 
 export async function insertPlant (plant : Plant) : Promise<string> {

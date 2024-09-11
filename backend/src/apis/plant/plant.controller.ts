@@ -1,7 +1,7 @@
 
 import {Request, Response} from "express";
 import {Status} from "../../utils/interfaces/Status";
-import {selectAllPlants, selectPlantByPlantId, selectPlantsByPlantName} from "./plant.model";
+import {selectAllPlants, selectPlantByPlantId, selectPlantByPlantSpecies, selectPlantsByPlantName} from "./plant.model";
 import {z} from "zod";
 import {zodErrorResponse} from "../../utils/response.utils";
 
@@ -95,4 +95,29 @@ export async function getPlantsByPlantName (request: Request, response: Response
             data: []
         })
     }
+}
+
+export async function getPlantByPlantSpecies(request: Request, response: Response) : Promise<Response<Status>> {
+
+    try {
+     const validationResult = z.string({
+     required_error: 'please provide a valid plant species',
+     invalid_type_error: "plant species must be a string"
+        }).safeParse(request.params.plantSpecies)
+
+     if (!validationResult.success) {
+         return zodErrorResponse(response, validationResult.error)
+     }
+
+     const plantSpecies = validationResult.data
+     const data = await selectPlantByPlantSpecies(plantSpecies)
+     return response.json({status: 200, message: null, data})
+
+ } catch (error) {
+     return response.json({
+         status: 500,
+         message: '',
+         data: []
+     })
+ }
 }

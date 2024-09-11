@@ -3,14 +3,11 @@ import {insertPlant, Plant} from "../../apis/plant/plant.model";
 
 async function dataDownloader() {
 
-    let page = 2
+    let page = 4
     do {
         let data = await fetch(`https://perenual.com/api/species-list?key=${process.env.PERENUAL_API_KEY}&indoor=1&page=${page}`).then(res => res.json())
 
         page++
-        console.log(data)
-        console.log(data.data)
-        console.log(data.data.length)
 
         for (let item of data.data) {
 
@@ -34,11 +31,13 @@ async function dataDownloader() {
                 plantPropagation: perenualPlant.propagation
             }
 
-            console.log(plant)
+            console.log(perenualPlant)
+            console.log(page)
+
             await insertPlant(plant)
         }
 
-    } while (page < 6)
+    } while (page < 7)
 }
 
 dataDownloader().catch(error => console.error(error))
