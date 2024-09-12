@@ -61,12 +61,10 @@ export const  PlantSchema = z.object ({
     })
         .max(32, { message: 'Plant Growth is too long.'})
         .nullable(),
-    plantToxicity : z.string({
+    plantToxicity : z.coerce.boolean({
         required_error: 'Plant Toxicity is required',
         invalid_type_error: 'Please provide valid Plant Toxicity'
-    })
-        .max(5, { message: 'Plant Toxicity is too long.'})
-        .nullable(),
+    }),
     plantPropagation : z.string({
         required_error: 'Plant Propagation is required',
         invalid_type_error: 'Please provide valid Plant Propagation'
@@ -85,14 +83,14 @@ export type Plant = z.infer<typeof PlantSchema>
 
 export async function selectAllPlants () : Promise<Plant[]> {
 
-    const rowList = <Plant[]>await sql`SELECT plant_id, plant_name, plant_species, plant_description, plant_image_url, plant_watering, plant_sunlight, plant_growth, plant_toxicity, plant_propagation, plant_maintenance FROM plant ORDER BY plant_id DESC`
+    const rowList = <Plant[]>await sql`SELECT plant_id, plant_name, plant_species, plant_description, plant_image_url, plant_watering, plant_sunlight, plant_growth_rate, plant_toxicity, plant_propagation, plant_maintenance FROM plant ORDER BY plant_id DESC`
 
     return PlantSchema.array().parse(rowList)
 }
 
 export async function selectPlantByPlantId(plantId : string): Promise<Plant | null> {
 
-    const rowList = <Plant[]>await sql`SELECT plant_id, plant_name, plant_species, plant_description, plant_image_url, plant_watering, plant_sunlight, plant_growth, plant_toxicity, plant_propagation, plant_maintenance FROM plant WHERE plant_id = ${plantId}`
+    const rowList = <Plant[]>await sql`SELECT plant_id, plant_name, plant_species, plant_description, plant_image_url, plant_watering, plant_sunlight, plant_growth_rate, plant_toxicity, plant_propagation, plant_maintenance FROM plant WHERE plant_id = ${plantId}`
 
     const result = PlantSchema.array().max(1).parse(rowList)
 
@@ -101,14 +99,14 @@ export async function selectPlantByPlantId(plantId : string): Promise<Plant | nu
 }
 
 export async function selectPlantByPlantName(plantName : string): Promise<Plant[]> {
-    const rowList = <Plant[]>await sql`SELECT plant_id, plant_name, plant_species, plant_description, plant_image_url, plant_watering, plant_sunlight, plant_growth, plant_toxicity, plant_propagation, plant_maintenance FROM plant WHERE plant_name = ${plantName}`
+    const rowList = <Plant[]>await sql`SELECT plant_id, plant_name, plant_species, plant_description, plant_image_url, plant_watering, plant_sunlight, plant_growth_rate, plant_toxicity, plant_propagation, plant_maintenance FROM plant WHERE plant_name = ${plantName}`
 
     return PlantSchema.array().parse(rowList)
 
 }
 
 export async function selectPlantsByPlantName(plantName : string): Promise<Plant[]> {
-    const rowList = <Plant[]>await sql`SELECT plant_id, plant_name, plant_species, plant_description, plant_image_url, plant_watering, plant_sunlight, plant_growth, plant_toxicity, plant_propagation, plant_maintenance FROM plant WHERE plant_name = ${plantName}`
+    const rowList = <Plant[]>await sql`SELECT plant_id, plant_name, plant_species, plant_description, plant_image_url, plant_watering, plant_sunlight, plant_growth_rate, plant_toxicity, plant_propagation, plant_maintenance FROM plant WHERE plant_name = ${plantName}`
     return PlantSchema.array().parse(rowList)
 }
 

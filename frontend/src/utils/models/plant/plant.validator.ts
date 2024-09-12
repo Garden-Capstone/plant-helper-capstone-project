@@ -12,10 +12,10 @@ export const PlantSchema = z.object({
         }).url({message: 'Plant image url must be a url'}),
         plantWatering: z.string().max(32, {message: 'Please provide a valid plant watering length.'}),
         plantSunlight: z.string({required_error: 'Please provide a valid plant watering.'}).array(),
-        plantGrowthRate: z.string().max(32,{message: 'Please provde a valid plant growth rate.'}),
-        plantToxicity: z.string().max(5,{message: 'Please provide a valid plant toxicity.'}),
+        plantGrowthRate: z.string().max(32,{message: 'Please provide a valid plant growth rate.'}).nullable(),
+        plantToxicity: z.coerce.boolean({ required_error: 'Please provide a valid plant toxicity.'}),
         plantPropagation: z.string({ required_error: 'Please provide valid plant propagation'}).array(),
-        plantMaintenance: z.string().max(64,{message: 'Please provide a valid plant maintenance.'}),
+        plantMaintenance: z.string().max(64,{message: 'Please provide a valid plant maintenance.'}).nullable(),
 })
 
 export type Plant = z.infer<typeof PlantSchema>

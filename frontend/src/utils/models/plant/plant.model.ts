@@ -1,11 +1,13 @@
 'use server'
 
+import { unstable_noStore as noStore } from 'next/cache'
+
 
 import {Plant, PlantSchema} from "@/utils/models/plant/plant.validator";
 
 export async function fetchAllPlants() : Promise<Plant[]> {
-    const {data} = await fetch(`${process.env.PUBLIC_API_URL}/apis/plants`,{
-        method: 'GET',
+    const {data} = await fetch(`${process.env.PUBLIC_API_URL}/apis/plant/`,{
+        method: "get",
         headers: {
             'Content-Type': 'application/json',
         }
@@ -17,10 +19,11 @@ export async function fetchAllPlants() : Promise<Plant[]> {
         }
     })
     return PlantSchema.array().parse(data)
+
 }
 
 export async function fetchPlantsByPlantName(plantName : string) {
-    const {data} = await fetch(`${process.env.PUBLIC_API_URL}/apis/plants/plantName${plantName}`,{
+    const {data} = await fetch(`${process.env.PUBLIC_API_URL}/apis/plant/plantName${plantName}`,{
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

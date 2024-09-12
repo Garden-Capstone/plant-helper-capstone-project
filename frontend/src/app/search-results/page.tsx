@@ -1,42 +1,15 @@
-"use client"
 
-import {PlantCard} from '@/app/search-results/components/plantcard'
+import {PlantCard} from '@/app/search-results/components/PlantCard'
 import {SearchNavBar} from "@/app/search-results/components/navigation";
+import {fetchAllPlants} from "@/utils/models/plant/plant.model";
+import {Plant} from "@/utils/models/plant/plant.validator";
+import {PageProps} from "@/utils/interfaces/NextComponent";
 
-
-
-
-
-export default function Home() {
-
-    let plantcards = [
-        {
-            name: 'Monstera',
-            image: 'https://images.unsplash.com/photo-1626929252164-27c26d107b00?q=80&w=1635&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-            text: 'Monstera plant is a green plant that is green with interesting looking leaves. This is all filler text and to test props.'
-        },
-        {
-            name: 'Tulip',
-            image: 'https://images.unsplash.com/photo-1522431745718-cd31223a468d?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-            text: 'Lorem ipsum odor amet, consectetuer adipiscing elit. Congue etiam odio dictum natoque nisi ante metus. Imperdiet iaculis justo vel tristique justo curabitur dolor sociosqu platea. Natoque condimentum dolor accumsan posuere a.'
-        },
-        {
-            name: 'Venus Fly Trap',
-            image: 'https://images.unsplash.com/photo-1538358519265-586278a34106?q=80&w=1752&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-            text: 'Lorem ipsum odor amet, consectetuer adipiscing elit. Congue etiam odio dictum natoque nisi ante metus. Imperdiet iaculis justo vel tristique justo curabitur dolor sociosqu platea. Natoque condimentum dolor accumsan posuere a.'
-        },
-        {
-            name: 'Aloe Vera',
-            image: 'https://images.unsplash.com/photo-1509423350716-97f9360b4e09?q=80&w=1635&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-            text: 'Lorem ipsum odor amet, consectetuer adipiscing elit. Congue etiam odio dictum natoque nisi ante metus. Imperdiet iaculis justo vel tristique justo curabitur dolor sociosqu platea. Natoque condimentum dolor accumsan posuere a.'
-        },
-        {
-            name: 'Barrel Cactus',
-            image: 'https://images.unsplash.com/photo-1528476513691-07e6f563d97f?q=80&w=1615&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-            text: 'Lorem ipsum odor amet, consectetuer adipiscing elit. Congue etiam odio dictum natoque nisi ante metus. Imperdiet iaculis justo vel tristique justo curabitur dolor sociosqu platea. Natoque condimentum dolor accumsan posuere a.',
-        }
-    ]
-
+type SearchParams = {q: string | undefined}
+export default async function Home(props: PageProps<{}, SearchParams>) {
+    const q = props.searchParams.q
+    console.log(q)
+    const plants: Plant[] = await fetchAllPlants()
 
     return (
 
@@ -52,11 +25,7 @@ export default function Home() {
 
             <div className='container mx-auto'>
                  <div className='grid h-24 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8'>
-                     <PlantCard plantcard={plantcards[0]}/>
-                     <PlantCard plantcard={plantcards[1]}/>
-                     <PlantCard plantcard={plantcards[2]}/>
-                     <PlantCard plantcard={plantcards[3]}/>
-                     <PlantCard plantcard={plantcards[4]}/>
+                     {plants.map(plant => <PlantCard key={plant.plantId} plant={plant}/> )}
                  </div>
             </div>
 
