@@ -1,7 +1,7 @@
 'use server'
 
 
-import {Plant, PlantSchema} from "@/utils/models/search/search.validator";
+import {Plant, PlantSchema} from "@/utils/models/plant/plant.validator";
 
 export async function fetchAllPlants() : Promise<Plant[]> {
     const {data} = await fetch(`${process.env.PUBLIC_API_URL}/apis/plants`,{
