@@ -61,7 +61,7 @@ export default function Questionnaire() {
                             <Label htmlFor="question3">No</Label>
                         </div>
 
-                        <legend className="mb-4">Question 4: Does your plant have room to grow?</legend>
+                        <legend className="mb-4">Question 4: Will your plant have room to grow?</legend>
                         <div className="flex items-center gap-2">
                             <Radio id="question4" name="space" value="yes" defaultChecked/>
                             <Label htmlFor="question4">Yes</Label>
