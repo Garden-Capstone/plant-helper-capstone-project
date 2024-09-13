@@ -1,11 +1,8 @@
-'use client'
-
-
-import {Button, Card} from "flowbite-react";
+"use client"
+import { Card } from "flowbite-react"
 import {PiPottedPlantBold} from "react-icons/pi";
-import React from "react";
 
-export default function TopSection() {
+export default function background() {
     return (
         <>
             <div
@@ -23,28 +20,9 @@ export default function TopSection() {
                     <p>Plant Whisperer</p>
                 </div>
                 <div>
-                    <p className="flex justify-center pb-14 text-[#2E8B57] font-bold">Helping Build Relationships Between Plants and People!</p>
+                    <p className="flex justify-center pb-14 text-[#2E8B57] font-bold">Congratulations on taking the next steps towards your plant relationship goals! Lets get your profile set up so you can select and save the plants you want to grow!</p>
                 </div>
-
-                <Button className="bg-[#FF9999] enabled:hover:bg-[#3CB371]">
-                    LogIn! Welcome Back
-                </Button>
-
-                <Button className="bg-[#FF9999] enabled:hover:bg-[#3CB371]">
-                    I have a plant
-                    and would like to learn more
-                </Button>
-
-                <Button className="bg-[#FF9999] enabled:hover:bg-[#3CB371]">
-                    I do not have a plant
-                    but I would like to
-                </Button>
             </Card>
         </>
     );
 }
-
-
-
-
-

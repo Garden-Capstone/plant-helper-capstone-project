@@ -10,6 +10,8 @@ import {FormDebugger} from "@/app/components/FormDebugger";
 import {DisplayStatus} from "@/app/components/navigation/DisplayStatus";
 
 
+
+
 const SignUpSchema = ProfileSchema
     .omit({profileId: true, profileImageUrl: true, profileGoal: true})
     .extend({
