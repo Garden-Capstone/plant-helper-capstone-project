@@ -7,8 +7,10 @@ import {PageProps} from "@/utils/interfaces/NextComponent";
 
 type SearchParams = {q: string | undefined}
 export default async function Home(props: PageProps<{}, SearchParams>) {
+
     const q = props.searchParams.q
     console.log(q)
+
     const plants: Plant[] = await fetchAllPlants()
 
     return (
