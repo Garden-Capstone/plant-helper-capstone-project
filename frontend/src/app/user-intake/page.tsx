@@ -1,162 +1,30 @@
-'use client'
-import {z} from "zod";
-import {ProfileSchema} from "@/utils/models/profile/profile.validator";
-import {Formik, FormikHelpers, FormikProps} from "formik";
-import {toFormikValidationSchema} from "zod-formik-adapter";
-import {Button, Label, TextInput} from "flowbite-react";
-import React from "react";
-import {DisplayError} from "@/app/components/DisplayError";
-import {FormDebugger} from "@/app/components/FormDebugger";
-import {DisplayStatus} from "@/app/components/navigation/DisplayStatus";
+"use client"
+import { Card } from "flowbite-react"
+import {PiPottedPlantBold} from "react-icons/pi";
+import {SignUpForm} from "@/app/user-intake/SignUpForm";
 
-
-
-
-const SignUpSchema = ProfileSchema
-    .omit({profileId: true, profileImageUrl: true, profileGoal: true})
-    .extend({
-        profileEmail: z.string({
-            required_error: 'profileEmail is required',
-            invalid_type_error: 'please provide a valid profileEmail'
-        })
-            .email({ message: 'please provide a valid email'})
-            .max(255, { message: 'profileEmail is too long'}),
-    profilePasswordConfirm: z.string({required_error: 'password confirmation is required'})
-        .min(8, { message: 'please provide a valid password (min 8 characters)'})
-        .max(32, { message: 'please provide a valid password (max 32 characters)'}),
-        profilePassword: z.string({required_error: 'password is required'})
-            .min(8, { message: 'please provide a valid password (min 8 characters)'})
-            .max(32, { message: 'please provide a valid password (max 32 characters)'
-            })
-
-}).refine(data => data.profilePassword === data.profilePasswordConfirm, {
-        message: 'passwords do not match'
-    })
-type SignUp = z.infer< typeof SignUpSchema>
-export default function Page() {
-            const initialValues = {
-                profileEmail: '',
-                profileUsername: '',
-                profilePassword: '',
-                profilePasswordConfirm: ''
-            }
-            /*
-            *
-            *
-             */
-
-    const handleSubmit = (values: SignUp, actions: FormikHelpers<SignUp>) => {
-        const {setStatus, resetForm} = actions
-        fetch('/apis/sign-up', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(values)
-        })
-            .then(response => response.json())
-            .then(data => {
-                const type = 'failure'
-                setStatus({type, message: data.message})
-                if (data.status === 200) {
-                    resetForm()
-                }
-            })
-            .catch(error => {
-                console.error(error)
-                setStatus({type: 'failure', message: 'An error occurred try again later'})
-            })
-    }
-    return(
+export default function () {
+    return (
         <>
-        <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={toFormikValidationSchema(SignUpSchema)}>
-            {SignUpFormContent}
-            </Formik>
-        </>
-    )
-}
-export function SignUpFormContent(props: FormikProps<SignUp>) {
-   const {
-       status,
-       values,
-       errors,
-       touched,
-       handleChange,
-       handleBlur,
-       handleSubmit,
-       handleReset
-   }  = props;
-
-   return (
-       <>
-           <div className="container mx-auto">
-           <form onSubmit={handleSubmit} className="flex min-h-auto gap-4 min-w-full flex-col grow">
-               <div>
-                       <div className="mb-2 block">
-                        <Label htmlFor="profileEmail" value="Email"/>
-                       </div>
-
-                   <TextInput
-                       onChange={handleChange}
-                       onBlur={handleBlur}
-                       autoComplete='profileEmail'
-                       id="profileEmail"
-                       name={'profileEmail'}
-                       type="email"
-                       value={values.profileEmail}
-                    />
-                     <DisplayError errors={errors} touched={touched} field={'profileEmail'}/>
-               </div>
-               <div>
-                    <div className="md-2 block">
-                         <Label htmlFor="profileUsername" value="User Name"/>
-                    </div>
-                    <TextInput
-                         onChange={handleChange}
-                         onBlur={handleBlur}
-                         autoComplete='username'
-                         id="profileUsername"
-                         name={'profileUsername'}
-                         type="text"
-                         value={values.profileUsername}
-                     />
-                    <DisplayError errors={errors} touched={touched} field={'profileUsername'}/>
-               </div>
-               <div>
-                    <div className="mb-2 block">
-                            <Label htmlFor="profilePassword" value="Password"/>
-                    </div>
-                     <TextInput
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            autoComplete={'new-password'}
-                            name='profilePassword'
-                            id="profilePassword"
-                            type="password"
-                            value={values.profilePassword}
-                    />
-                    <DisplayError errors={errors} touched={touched} field={'profilePassword'}/>
+            <div
+                className="fixed inset-0 bg-local top-0 left-0 right-0"
+                style={{
+                    backgroundImage: "url('https://images.unsplash.com/photo-1523575708161-ad0fc2a9b951?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    zIndex: '-1'
+                }}
+            ></div>
+            <Card className="flex max-w-lg mx-auto mt-20 overflow-hidden bg-white bg-opacity-90 shadow-2xl">
+                <div className="flex justify-center pt-16 text-[#2E8B57] text-5xl font-serif">
+                    <PiPottedPlantBold className="text-[#2E8B57]"/>
+                    <p>Plant Whisperer</p>
                 </div>
                 <div>
-                    <div className="mb-2 block">
-                            <Label htmlFor="profilePasswordConfirm" value="Password Confirm"/>
-                    </div>
-                    <TextInput
-                        value={values.profilePasswordConfirm}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        id="profilePasswordConfirm"
-                        name="profilePasswordConfirm"
-                        autoComplete={'new-password confirm'} type="password"
-                    />
-                    <DisplayError errors={errors} touched={touched} field={'profilePasswordConfirm'}/>
+                    <p className="flex justify-center pb-14 text-[#2E8B57] font-bold">Congratulations on taking the next steps towards your plant relationship goals! Lets get your profile set up so you can select,save and track the progress of the plants you want to grow!</p>
+                <SignUpForm/>
                 </div>
-               <Button color={'success'} type="submit">Submit</Button>
-               <Button color={'failure'} type="reset" onClick={handleReset}>Reset</Button>
-               <DisplayStatus status={status}/>
-           </form>
-                    <FormDebugger {...props} />
-           </div>
-       </>
-   )
+            </Card>
+        </>
+    );
 }
