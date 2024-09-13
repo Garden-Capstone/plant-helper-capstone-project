@@ -12,7 +12,7 @@ export const ProfileSchema = z.object({
     })
         .max(255, { message: 'profile about length is too long'})
         .nullable(),
-    profileImageUrl: z.string({
+    profileImage: z.string({
         required_error: 'profileImage is required',
         invalid_type_error: 'please provide a valid profileImageUrl'
     })

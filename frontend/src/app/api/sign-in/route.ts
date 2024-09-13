@@ -4,7 +4,7 @@ import {cookies} from "next/headers";
 export async function POST(req: Request) {
     const body = await req.json()
 
-    const responseFromServer = await fetch(`$process.env.PUBLIC_API_URL}/apis/sign-in`,
+    const responseFromServer = await fetch(`${process.env.PUBLIC_API_URL}/apis/sign-in`,
         {
             method: "POST",
             headers: {

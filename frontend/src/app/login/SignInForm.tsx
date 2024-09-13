@@ -8,6 +8,7 @@ import {DisplayError} from "@/app/components/DisplayError";
 import {DisplayStatus} from "@/app/components/navigation/DisplayStatus";
 
 
+
 const formSchema = z.object({
     profilePassword: z.string({
         required_error: "Password is required to Log In",
@@ -34,7 +35,7 @@ export function SignInForm() {
 
     const handleSubmit = (values: FormSchema, actions: FormikHelpers<FormSchema>) => {
         const {profileEmail, profilePassword} = values
-        const {setStatus, resetForm} = actions
+        const {setStatus} = actions
 
         fetch('apis/sign-in', {
             method: 'POST',
@@ -57,7 +58,10 @@ export function SignInForm() {
     }
 
         return (
-            <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={toFormikValidationSchema(formSchema)} >
+            <Formik
+                initialValues={initialValues}
+                onSubmit={handleSubmit}
+                validationSchema={toFormikValidationSchema(formSchema)} >
                 {SignInFormContent}
             </Formik>
         )
