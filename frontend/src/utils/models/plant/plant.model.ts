@@ -40,3 +40,20 @@ export async function fetchPlantsByPlantName(plantName : string) {
     })
     return PlantSchema.array().parse(data)
 }
+
+export async function fetchPlantByPlantId(plantId : string) {
+
+    const {data} = await fetch(`${process.env.PUBLIC_API_URL}/apis/plant/${plantId}`,{
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }).then((response) => {
+        if(!response.ok) {
+            throw new Error('Network response was not ok')
+        }else {
+            return response.json()
+        }
+    })
+    return PlantSchema.parse(data)
+}

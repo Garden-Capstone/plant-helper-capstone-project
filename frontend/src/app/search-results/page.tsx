@@ -20,7 +20,7 @@ export default async function Home(props: PageProps<{}, SearchParams>) {
             <section className='text-center md:text-start md:container mx-auto py-10'>
                 <div className='text-xl'>
                     <h2> Results shown for
-                        <span className='text-bold text-gray-700 italic'> 'cool plant' </span>
+                        <span className='text-bold text-gray-700 italic'> '{q}'</span>
                     </h2>
                 </div>
             </section>
