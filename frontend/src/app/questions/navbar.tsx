@@ -6,7 +6,8 @@ import Link from "next/link";
 
 export default function NavBar() {
     return (
-
+//
+//
         <Navbar fluid rounded className="bg-[#3CB371] dark:bg-[#3CB371]">
             <Navbar.Brand as={Link} href="https://flowbite-react.com">
 
