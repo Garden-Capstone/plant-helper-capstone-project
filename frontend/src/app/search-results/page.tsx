@@ -1,7 +1,7 @@
 
 import {PlantCard} from '@/app/search-results/components/PlantCard'
 import {SearchNavBar} from "@/app/search-results/components/navigation";
-import {fetchAllPlants} from "@/utils/models/plant/plant.model";
+import {fetchAllPlants, fetchPlantsByPlantName} from "@/utils/models/plant/plant.model";
 import {Plant} from "@/utils/models/plant/plant.validator";
 import {PageProps} from "@/utils/interfaces/NextComponent";
 
@@ -11,7 +11,7 @@ export default async function Home(props: PageProps<{}, SearchParams>) {
     const q = props.searchParams.q
     console.log(q)
 
-    const plants: Plant[] = await fetchAllPlants()
+    const plants: Plant[] = await fetchPlantsByPlantName(q ?? '')
 
     return (
 

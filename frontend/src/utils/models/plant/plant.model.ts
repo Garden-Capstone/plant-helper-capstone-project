@@ -23,7 +23,10 @@ export async function fetchAllPlants() : Promise<Plant[]> {
 }
 
 export async function fetchPlantsByPlantName(plantName : string) {
-    const {data} = await fetch(`${process.env.PUBLIC_API_URL}/apis/plant/plantName/${plantName}`,{
+    if (plantName === '') {
+        return []
+    }
+    const {data} = await fetch(`${process.env.PUBLIC_API_URL}/apis/plant/plantsByName/${plantName}`,{
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
