@@ -1,4 +1,4 @@
-'use Client'
+'use client'
 
 
 import {Button, Card, Dropdown, Label, Radio} from "flowbite-react";
@@ -31,27 +31,44 @@ export default function Questionnaire() {
                 </div>
                 <div>
                     <fieldset className="flex max-w-md flex-col gap-4">
-                        <legend className="mb-4">Question 1: Will your plant have natural light?</legend>
+                        <legend className="mb-4">Question 1: Select the option that best describes the type of
+                            sunlight your plant will receive.
+                        </legend>
                         <div className="flex items-center gap-2">
-                            <Radio id="question1" name="light" value="yes" defaultChecked/>
-                            <Label htmlFor="question1">Yes</Label>
+                            <Radio id="question1" name="light" value="full sun" defaultChecked/>
+                            <Label htmlFor="question1">full sun</Label>
                         </div>
                         <div className="flex items-center gap-2">
-                            <Radio id="question1" name="light" value="No"/>
-                            <Label htmlFor="question1">No</Label>
+                            <Radio id="question1" name="light" value="part sun"/>
+                            <Label htmlFor="question1">part sun</Label>
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <Radio id="question1" name="light" value="part shade"/>
+                            <Label htmlFor="question1">part shade</Label>
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <Radio id="question1" name="light" value="full shade"/>
+                            <Label htmlFor="question1">filtered shade</Label>
                         </div>
 
-                        <legend className="mb-4">Question 2: Can you water your plant regularly?</legend>
+                        <legend className="mb-4">Question 2: Tell us about your watering availability for your plant.
+                        </legend>
                         <div className="flex items-center gap-2">
-                            <Radio id="question2" name="water" value="yes" defaultChecked/>
-                            <Label htmlFor="question2">Yes</Label>
+                            <Radio id="question2" name="water" value="Frequent" defaultChecked/>
+                            <Label htmlFor="question2">Frequent</Label>
                         </div>
                         <div className="flex items-center gap-2">
-                            <Radio id="question2" name="water" value="No"/>
-                            <Label htmlFor="question2">No</Label>
+                            <Radio id="question2" name="water" value="Average"/>
+                            <Label htmlFor="question2">Average</Label>
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <Radio id="question2" name="water" value="Minimum"/>
+                            <Label htmlFor="question2">Minimum</Label>
                         </div>
 
-                        <legend className="mb-4">Question 3: Do you have pets or young children?</legend>
+                        <legend className="mb-4">Question 3: Do you have pets or young children who could be affected by
+                            plant toxicity?
+                        </legend>
                         <div className="flex items-center gap-2">
                             <Radio id="question3" name="toxicity" value="yes" defaultChecked/>
                             <Label htmlFor="question3">Yes</Label>
@@ -61,14 +78,18 @@ export default function Questionnaire() {
                             <Label htmlFor="question3">No</Label>
                         </div>
 
-                        <legend className="mb-4">Question 4: Will your plant have room to grow?</legend>
+                        <legend className="mb-4">Question 4: How much space does your plant have to grow?</legend>
                         <div className="flex items-center gap-2">
-                            <Radio id="question4" name="space" value="yes" defaultChecked/>
-                            <Label htmlFor="question4">Yes</Label>
+                            <Radio id="question4" name="space" value="Low" defaultChecked/>
+                            <Label htmlFor="question4">Low</Label>
                         </div>
                         <div className="flex items-center gap-2">
-                            <Radio id="question4" name="space" value="No"/>
-                            <Label htmlFor="question4">No</Label>
+                            <Radio id="question4" name="space" value="High"/>
+                            <Label htmlFor="question4">High</Label>
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <Radio id="question4" name="space" value="Moderate"/>
+                            <Label htmlFor="question4">Moderate</Label>
                         </div>
                     </fieldset>
                 </div>
