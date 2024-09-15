@@ -111,3 +111,4 @@ export default async function Details(props: PageProps<{plantId:string}>) {
         </>
     );
 }
+
