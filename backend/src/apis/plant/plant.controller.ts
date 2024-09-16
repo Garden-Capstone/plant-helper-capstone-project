@@ -5,7 +5,6 @@ import {selectAllPlants, selectPlantByPlantId, selectPlantByPlantSpecies, select
 import {z} from "zod";
 import {zodErrorResponse} from "../../utils/response.utils";
 
-
 export async function getAllPlants(request: Request, response: Response) : Promise<Response<Status>> {
 
     try {
@@ -22,30 +21,22 @@ export async function getAllPlants(request: Request, response: Response) : Promi
     }
 }
 
-export async function getPlantByPlantId(request: Request, response: Response) : Promise<Response<Status>> {
-
+export async function getPlantByPlantId(request: Request, response: Response): Promise<Response<Status>> {
     try {
-        const validationResult = z.string({
-            required_error: 'please provide a valid plant',
-            invalid_type_error: "plantId must be a uuid"
-        }).uuid({message: 'Please provide a valid Plant Id'}).safeParse(request.params.plantId)
-
+        const validationResult = z.string().uuid({ message: 'Please provide a valid Plant Id' }).safeParse(request.params.plantId);
         if (!validationResult.success) {
-            return zodErrorResponse(response, validationResult.error)
+            return zodErrorResponse(response, validationResult.error);
         }
-
-        const plantId = validationResult.data
-        const data = await selectPlantByPlantId(plantId)
-        return response.json({status: 200, message: null, data})
-
+        const plantId = validationResult.data;
+        const data = await selectPlantByPlantId(plantId);
+        return response.json({ status: 200, message: null, data });
     } catch (error) {
-        return response.json({
-            status: 500,
-            message: '',
-            data: []
-        })
+        console.error(error);
+        return response.status(500).json({ status: 500, message: 'Error getting plant, try again.', data: [] });
     }
 }
+
+
 
     export async function getPlantByPlantName (request: Request, response: Response) : Promise<Response<Status>> {
 
@@ -121,3 +112,27 @@ export async function getPlantByPlantSpecies(request: Request, response: Respons
      })
  }
 }
+
+
+export async function getPlantsByPlantQuestionnaire(request: Request, response: Response): Promise<Response<Status>> {
+    const { sunlight, watering, growthRate } = request.query;
+    try {
+        const plantRepository = AppDataSource.getRepository(Plant);
+        const queryBuilder = plantRepository.createQueryBuilder('plant');
+        if (sunlight) {
+            queryBuilder.andWhere('plant.plantSunlight IN (:...sunlight)', { sunlight: (sunlight as string).split(',') });
+        }
+        if (watering) {
+            queryBuilder.andWhere('plant.plantWatering = :watering', { watering });
+        }
+        if (growthRate) {
+            queryBuilder.andWhere('plant.plantGrowthRate = :growthRate', { growthRate });
+        }
+        const plants = await queryBuilder.getMany();
+        return response.json({ status: 200, message: null, data: plants });
+    } catch (error) {
+        console.error('Error fetching plants:', error);
+        return response.status(500).json({ status: 500, message: 'An error occurred while fetching plants.', data: [] });
+    }
+}
+

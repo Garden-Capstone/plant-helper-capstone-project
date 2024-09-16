@@ -3,6 +3,9 @@ import {PageProps} from "@/utils/interfaces/NextComponent";
 import React from "react";
 import {fetchPlantByPlantId} from "@/utils/models/plant/plant.model";
 import {SearchDetailsNav} from "@/app/components/navigation/SearchDetailsNav";
+import {Footer} from "@/app/footercomponent/Footer";
+import {AddPlantButton} from "@/app/components/navigation/AddPlantButton";
+import PlantDescription from "@/app/user-plant/component/plantdescription";
 
 export default async function Details(props: PageProps<{plantId:string}>) {
     const plantId = props.params.plantId
@@ -24,7 +27,10 @@ export default async function Details(props: PageProps<{plantId:string}>) {
                         style={{width: '500px', height: '500px', objectFit: 'cover'}}
                     />
                 </div>
-
+                {/*Add plant to locker Button*/}
+                <div className='flex flex-wrap justify-end pt-10 pr-10'>
+                    <AddPlantButton/>
+                </div>
                 {/*Plant Name and Description*/}
                 <div className="bg-[#F9F7EF]">
                     <div className="text-3xl md:text-7xl mt-36 ml-14 text-[#2C6E49] bg-[#F9F7EF] capitalize">
@@ -92,18 +98,7 @@ export default async function Details(props: PageProps<{plantId:string}>) {
                             </p>
                         </div>
                     </div>
-
-
-                {/*    <Footer container className="bg-[#DAA520] p-5 mt-11">*/}
-                {/*        <Footer.Copyright className="text-[#F9F7EF] hover:font-bold" href="#" by="PlantWhisperer™"*/}
-                {/*                          year={2024}/>*/}
-                {/*        <Footer.LinkGroup className="text-[#F9F7EF] hidden md:flex">*/}
-                {/*            <Footer.Link className="hover:font-bold" href="#">Home</Footer.Link>*/}
-                {/*            <Footer.Link className="hover:font-bold" href="/login">Login</Footer.Link>*/}
-                {/*            <Footer.Link className="hover:font-bold" href="#">Sign Up</Footer.Link>*/}
-                {/*        <Footer.Link className="hover:font-bold" href="#">Questionnaire</Footer.Link>*/}
-                {/*    </Footer.LinkGroup>*/}
-                {/*</Footer>*/}
+                <Footer/>
             </div>
 
         </>

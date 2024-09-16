@@ -1,5 +1,12 @@
 import {Router} from "express";
-import {getAllPlants, getPlantByPlantId, getPlantByPlantName, getPlantsByPlantName} from "./plant.controller";
+import {
+    getAllPlants,
+    getPlantByPlantId,
+    getPlantByPlantName,
+    getPlantByPlantSpecies,
+    getPlantsByPlantName,
+    getPlantsByPlantQuestionnaire
+} from "./plant.controller";
 
 
 const basePath = '/apis/plant';
@@ -10,9 +17,17 @@ router.route('/').get(getAllPlants)
 
 router.route('/:plantId').get(getPlantByPlantId)
 
-router.route('/plantsByName/:plantName').get(getPlantsByPlantName)
+router.route('/plantByName/plantName/:plantName').get(getPlantByPlantName)
 
+router.route('/plantBySpecies/plantSpecies/:plantSpecies').get(getPlantByPlantSpecies)
 
+router.route('/:plantName').get(getPlantsByPlantName)
 
 export const plantRoute = {basePath, router}
+
+function getPlantByPlantQuestionnaire() {
+
+}
+
+router.route('/api/plant/plant.model').get(getPlantsByPlantQuestionnaire)
 
