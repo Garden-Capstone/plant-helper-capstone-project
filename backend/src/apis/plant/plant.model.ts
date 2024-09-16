@@ -100,6 +100,14 @@ export async function selectPlantByPlantId(plantId : string): Promise<Plant | nu
 
 }
 
+export async function selectPlantByPlantQuestionnaire(plantId : string): Promise<Plant | null> {
+    const rowList = <Plant[]>await sql`SELECT plant_watering, plant_sunlight, plant_growth_rate FROM plant WHERE plant_id = ${plantId}`
+    const result = PlantSchema.array().max(1).parse(rowList)
+
+    return result?.length === 1 ? result[0] : null
+}
+
+
 // export async function selectPlantByPlantName(plantName : string): Promise<Plant[]> {
 //     const rowList = <Plant[]>await sql`SELECT plant_id, plant_name, plant_species, plant_description, plant_image_url, plant_watering, plant_sunlight, plant_growth, plant_toxicity, plant_propagation, plant_maintenance FROM plant WHERE plant_name = ${plantName}`
 //

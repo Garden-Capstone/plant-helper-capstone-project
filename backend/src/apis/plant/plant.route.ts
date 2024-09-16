@@ -4,7 +4,8 @@ import {
     getPlantByPlantId,
     getPlantByPlantName,
     getPlantByPlantSpecies,
-    getPlantsByPlantName
+    getPlantsByPlantName,
+    getPlantsByPlantQuestionnaire
 } from "./plant.controller";
 
 
@@ -23,4 +24,10 @@ router.route('/plantBySpecies/plantSpecies/:plantSpecies').get(getPlantByPlantSp
 router.route('/:plantName').get(getPlantsByPlantName)
 
 export const plantRoute = {basePath, router}
+
+function getPlantByPlantQuestionnaire() {
+
+}
+
+router.route('/api/plant/plant.model').get(getPlantsByPlantQuestionnaire)
 
