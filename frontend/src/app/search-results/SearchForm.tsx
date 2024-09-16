@@ -1,7 +1,7 @@
 'use client'
 import {z} from "zod";
 import {useRouter} from "next/navigation";
-import {Formik, FormikHelpers, FormikProps} from "formik";
+import {Formik, FormikHelpers} from "formik";
 import React from "react";
 import {FloatingLabel} from "flowbite-react";
 
@@ -57,7 +57,7 @@ function SearchFormContent(props: any) {
                             variant="outlined"
                             label="Search Plants..."
                             style={{width: '400px'}}
-                            className="bg-[#2C6E49] text-[#F9F7EF] hover:text-[#F9F7EF] focus:text-[#F9F7EF] focus:ring-4 focus:ring-[#F9F7EF]"
+                            className="bg-[#2C6E49] text-[#F9F7EF] hover:text-white focus:text-white focus:ring-3 focus:ring-white"
                             name={'searchTerm'}
                             value={values.searchTerm}
                             onBlur={handleBlur}
