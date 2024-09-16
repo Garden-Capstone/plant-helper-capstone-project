@@ -27,13 +27,13 @@ export default async function Details(props: PageProps<{plantId:string}>) {
 
                 {/*Plant Name and Description*/}
                 <div className="bg-[#F9F7EF]">
-                    <div className="text-3xl md:text-7xl mt-36 ml-14 text-[#2C6E49] bg-[#F9F7EF]">
+                    <div className="text-3xl md:text-7xl mt-36 ml-14 text-[#2C6E49] bg-[#F9F7EF] capitalize">
                         <span>{plant.plantName}</span>
                         <div className="text-xl md:text-4xl md:ml-14 text-[#E5C062]">
                             <span>{plant.plantSpecies}</span>
                         </div>
                     </div>
-                    <div className="mx-14 mt-9 md:text-lg text-sm bg-[#F9F7EF] text-[#2C6E49] mb-16 md:mb-48">
+                    <div className="mx-14 mt-9 md:text-lg xl:text-xl text-sm bg-[#F9F7EF] text-[#2C6E49] mb-16 md:mb-48">
                         <span>{plant.plantDescription}</span>
                     </div>
                 </div>
