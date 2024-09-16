@@ -1,8 +1,11 @@
+'use client'
 import {FloatingLabel, Navbar} from "flowbite-react";
 import {PiPottedPlantBold} from "react-icons/pi";
+import {SearchForm} from "@/app/search-results/SearchForm";
+import React from "react";
 
 
-export function DetailsNav() {
+export function SearchDetailsNav() {
 
     return (
 
@@ -15,13 +18,10 @@ export function DetailsNav() {
                         </span>
             </Navbar.Brand>
             <div className="flex md:order-2 items-center space-x-4">
-                <div className="hidden md:block text-[#F9F7EF]">
-                    <FloatingLabel
-                        variant="outlined"
-                        label="Search"
-                        style={{width: '300px'}}
-                        className="bg-[#2C6E49] text-[#F9F7EF] hover:text-[#F9F7EF] focus:text-[#F9F7EF] focus:ring-4 focus:ring-[#F9F7EF]"/>
-                </div>
+
+                {/*new search bar*/}
+                <SearchForm/>
+
                 <svg
                     className="w-6 h-6 text-[#2C6E49] md:hidden"
                     aria-hidden="true"
@@ -42,13 +42,6 @@ export function DetailsNav() {
                 <Navbar.Link className="text-[#F9F7EF] navbar-link" href="#">Login</Navbar.Link>
                 <Navbar.Link className="text-[#F9F7EF] navbar-link" href="#">Sign Up</Navbar.Link>
                 <Navbar.Link className="text-[#F9F7EF] navbar-link" href="#">Questionnaire</Navbar.Link>
-                <div className="text-[#F9F7EF] mt-2 md:hidden">
-                    <FloatingLabel
-                        variant="outlined"
-                        label="Search"
-                        style={{width: '400px'}}
-                        className="bg-[#2C6E49] text-[#F9F7EF] hover:text-[#F9F7EF] focus:text-[#F9F7EF] focus:ring-4 focus:ring-[#F9F7EF]"/>
-                </div>
             </Navbar.Collapse>
         </Navbar>
     </>

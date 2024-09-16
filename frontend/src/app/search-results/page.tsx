@@ -5,6 +5,7 @@ import {Plant} from "@/utils/models/plant/plant.validator";
 import {PageProps} from "@/utils/interfaces/NextComponent";
 import React from "react";
 import {SearchNavBar} from "@/app/search-results/components/navigation";
+import {SearchDetailsNav} from "@/app/components/navigation/SearchDetailsNav";
 
 type SearchParams = {q: string | undefined}
 export default async function Home(props: PageProps<{}, SearchParams>) {
@@ -16,7 +17,7 @@ export default async function Home(props: PageProps<{}, SearchParams>) {
     return (
 
         <>
-            <SearchNavBar/>
+            <SearchDetailsNav/>
             <section className='text-center md:text-start md:container mx-auto py-10'>
                 <div className='text-xl'>
                     <h2> Results shown for

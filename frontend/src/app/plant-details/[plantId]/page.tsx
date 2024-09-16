@@ -1,10 +1,8 @@
 
-import { Footer } from "flowbite-react";
-
 import {PageProps} from "@/utils/interfaces/NextComponent";
 import React from "react";
-import {DetailsNav} from "@/app/plant-details/[plantId]/DetailsNav";
 import {fetchPlantByPlantId} from "@/utils/models/plant/plant.model";
+import {SearchDetailsNav} from "@/app/components/navigation/SearchDetailsNav";
 
 export default async function Details(props: PageProps<{plantId:string}>) {
     const plantId = props.params.plantId
@@ -17,7 +15,7 @@ export default async function Details(props: PageProps<{plantId:string}>) {
 
             <div className="bg-[#F9F7EF] max-h-full font-sans">
                 {/*Navbar*/}
-               {/*<DetailsNav/>*/}
+                <SearchDetailsNav/>
                 {/*Image Placeholder*/}
                 <div className="mx-14 mt-12 float-left bg-[#DAA520]">
                     <img

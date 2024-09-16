@@ -2,9 +2,8 @@
 import {z} from "zod";
 import {useRouter} from "next/navigation";
 import {Formik, FormikHelpers, FormikProps} from "formik";
-import {toFormikValidationSchema} from "zod-formik-adapter";
 import React from "react";
-import {FloatingLabel, TextInput} from "flowbite-react";
+import {FloatingLabel} from "flowbite-react";
 
 const formSchema = z.object ({
     searchTerm: z.string().max(97, {message: 'Not a searchable term'})
@@ -70,5 +69,5 @@ function SearchFormContent(props: any) {
                 </div>
 
         </>
-)
+    )
 }
