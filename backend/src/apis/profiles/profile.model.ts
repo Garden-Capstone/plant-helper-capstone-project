@@ -3,7 +3,7 @@ import { sql } from '../../utils/database.utils'
 
 /**
  * The shape of the private profile that is only used by express. it must never be returned to the controller.
- * @property profileId {sting} the primary key
+ * @property profileId {string} the primary key
  * @property profileUsername {varchar} unique
  * @property profileImage {varchar} the profile's pic
  * @property profileHash {string|null} the profile's hash
@@ -60,13 +60,14 @@ export const PrivateProfileSchema = z.object({
 export type PrivateProfile = z.infer<typeof PrivateProfileSchema>
 
 export const PublicProfileSchema = PrivateProfileSchema.omit({profileHash: true, profileActivationToken: true, profileEmail: true})
+
 export type PublicProfile = z.infer<typeof PublicProfileSchema>
 
 export async function insertProfile (profile: PrivateProfile): Promise<string> {
 
 const {profileId, profileUsername, profileImage, profileHash, profileActivationToken, profileGoal, profileEmail} = profile
 
-await sql`INSERT INTO profile (profile_id, profile_username, profile_image, profile_hash, profile_activation_token, profile_goal, profile_email) VALUES (gen_random_uuid(), ${profileUsername}, ${profileImage}, ${profileHash}, ${profileActivationToken}, ${profileGoal}, ${profileEmail}
+await sql`INSERT INTO profile (profile_id, profile_username, profile_image, profile_hash, profile_activation_token, profile_goal, profile_email) VALUES (${profileId}, ${profileUsername}, ${profileImage}, ${profileHash}, ${profileActivationToken}, ${profileGoal}, ${profileEmail}
 )`
 return 'Profile Successfully Created'
 }
@@ -92,3 +93,24 @@ export async function selectPrivateProfileByProfileActivationToken (profileActiv
     const result = PrivateProfileSchema.array().max(1).parse(rowList)
     return result?.length === 1 ? result[0] : null
 }
+
+
+export async function selectProfileByProfileId (profileId: string) : Promise<PublicProfile | null> {
+
+    const rowList = await sql`SELECT profile_id, profile_username, profile_image, profile_goal FROM profile WHERE profile_id = ${profileId}`
+
+    const result = PublicProfileSchema.array().max(1).parse(rowList)
+    return result?.length === 1 ? result[0] : null
+}
+
+
+export async function selectPrivateProfileByProfileId(profileId: string): Promise<PrivateProfile | null> {
+
+    const rowList = await sql`SELECT profile_id, profile_goal, profile_activation_token, profile_email, profile_hash, profile_image, profile_username FROM profile WHERE profile_id = ${profileId}`
+
+    const result = PrivateProfileSchema.array().max(1).parse(rowList)
+    return result?.length === 1 ? result[0] : null
+}
+
+
+
