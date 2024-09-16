@@ -7,7 +7,6 @@ import {toFormikValidationSchema} from "zod-formik-adapter";
 import {Button, Label, Modal} from "flowbite-react";
 import {DisplayError} from "@/app/components/DisplayError";
 import {DisplayStatus} from "@/app/components/navigation/DisplayStatus";
-import {FormDebugger} from "@/app/components/FormDebugger";
 import Link from "next/link";
 import {useState} from "react";
 
@@ -20,11 +19,8 @@ type Props = {
 
 const FormSchema = ProfileSchema
     .pick({profileUsername: true, profileGoal: true})
-    .extend({
-        profileImageUrl: z
-            .any()
-            .optional()
-})
+    .extend({profileImage: z.any().optional()
+    })
 
 type FormSchema = z.infer<typeof FormSchema>
 
@@ -35,18 +31,17 @@ export default function EditProfileForm({ authorization, profile } : Props) {
         return <></>
     }
 
-
     const handleSubmit = (formValues: FormSchema, actions: FormikHelpers<FormSchema>) => {
-        const {profileUsername, profileGoal} = formValues;
+        const {profileUsername, profileGoal, profileImage} = formValues;
         const {setStatus, resetForm} = actions;
 
-        fetch(`/apis/profiles/${profile.profileId}`, {
+        fetch(`/apis/profile/${profile.profileId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': authorization ?? "",
             },
-            body: JSON.stringify({profileUsername, profileGoal, profile})
+            body: JSON.stringify(formValues)
         }).then(
             (response: Response) => {
                 if (response.ok) {
@@ -59,15 +54,15 @@ export default function EditProfileForm({ authorization, profile } : Props) {
                 resetForm()
                 type = 'success'
                 router.push('/plant-locker')
+                router.refresh()
             }
             setStatus({type, message: json.message})
         })
     }
 
-
     return (
         <Formik
-            initialValues={{profileGoal: profile.profileGoal, profileUsername: profile.profileUsername}}
+            initialValues={{profileGoal: profile.profileGoal, profileUsername: profile.profileUsername, profileImage: profile.profileImage, profileId: profile.profileId}}
             onSubmit={handleSubmit}
             validationSchema={toFormikValidationSchema(FormSchema)}>
             {EditProfileFormContent}
@@ -87,6 +82,28 @@ export function EditProfileFormContent(props: FormikProps<FormSchema>) {
     } = props
 
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
+    const router = useRouter();
+
+
+    const handleLogout = async () => {
+        try {
+            const response = await fetch('/apis/sign-out', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            if (response.ok) {
+                router.push('/login');
+            } else {
+                console.error('Failed to log out');
+            }
+        } catch (error) {
+            console.error('Error logging out:', error);
+        }
+    };
+
 
     {/*This section is the code for the picture*/}
     const [profilePic, setProfilePic] = useState("https://images.unsplash.com/photo-1611866759729-0cba525f9b45?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D/100");
@@ -123,6 +140,7 @@ export function EditProfileFormContent(props: FormikProps<FormSchema>) {
                         <Button
                             className="text-sm mt-12 bg-[#F09999] border-lg border-[#f7b8b7] enabled:hover:bg-[#f7b8b7] focus:ring-2 focus:ring-[#f7b8b7]"
                             aria-label="Change Profile Picture"
+                            type="submit"
                             onClick={() => setIsModalOpen(true)}>
                             Change Picture
                         </Button>
@@ -149,13 +167,14 @@ export function EditProfileFormContent(props: FormikProps<FormSchema>) {
             </Modal>
             {/* Form Section */}
             <form onSubmit={handleSubmit}>
+                <input type="hidden" name="profileImage" value={profilePic}/>
             <div className="bg-[#f9f7ef]">
                 <div className="flex max-w-xl flex-col mx-auto gap-7 bg-[#f9f7ef]">
                     <div>
                         <div className="mb-2 block">
                             <Label htmlFor="small"
                                    className="text-md"
-                                   value="Userame"/>
+                                   value="Username"/>
                         </div>
                         <textarea
                             id="profileUsername"
@@ -166,26 +185,6 @@ export function EditProfileFormContent(props: FormikProps<FormSchema>) {
                             onBlur={handleBlur}
                             value={values.profileUsername}/>
                         <DisplayError errors={errors} touched={touched} field={'profileName'}/>
-                    </div>
-                    <div>
-                        <div className="mb-2 block">
-                            <Label htmlFor="small"
-                                   className="text-md"
-                                   value=" New Password*"/>
-                        </div>
-                        <textarea
-                            id="small"
-                            className="p-2 border rounded-lg w-full h-11 bg-white border-[#f9f7ef] resize-none overflow-hidden"
-                            placeholder="..............."/>
-                    </div>
-                    <div>
-                        <div className="mb-2 block">
-                            <Label htmlFor="small" className="text-md" value=" Confirm Password*"/>
-                        </div>
-                        <textarea
-                            id="small"
-                            className="p-2 border rounded-lg w-full h-11 bg-white border-[#f9f7ef] resize-none overflow-hidden"
-                            placeholder="..............."/>
                     </div>
                     <div>
                         <div className="mb-2 block">
@@ -206,7 +205,6 @@ export function EditProfileFormContent(props: FormikProps<FormSchema>) {
                     </div>
                 </div>
             </div>
-        </form>
             {/*Save Changes Button*/}
             <div className="flex flex-col items-center justify-center bg-[#f9f7ef]">
                 <Button
@@ -221,13 +219,14 @@ export function EditProfileFormContent(props: FormikProps<FormSchema>) {
                 <Link href="/login">
                     <Button
                         className="text-sm flex flex-col items-center bg-[#DAA520] enabled:hover:bg-[#E5C062] focus:ring-2 focus:ring-[#E5C062] mx-14 mt-10 mb-14"
-                        aria-label="Log Out">
+                        aria-label="Log Out"
+                        onClick={handleLogout}>
                         Log Out
                     </Button>
                 </Link>
             </div>
+            </form>
             <DisplayStatus status={status} />
-            <FormDebugger {...props} />
         </>
     )
 }

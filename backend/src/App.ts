@@ -12,6 +12,7 @@ import {plantRoute} from "./apis/plant/plant.route";
 import {imageRoute} from "./apis/image/image.route";
 import {lockerRoute} from "./apis/locker/locker.route";
 import {progressRoute} from "./apis/progress/progress.route";
+import {profileRoute} from "./apis/profiles/profile.route";
 
 // The following class creates the app and instantiates the server
 export class App {
@@ -58,6 +59,7 @@ export class App {
         this.app.use(imageRoute.basePath, imageRoute.router)
         this.app.use(lockerRoute.basePath, lockerRoute.router)
         this.app.use(progressRoute.basePath, progressRoute.router)
+        this.app.use(profileRoute.basePath, profileRoute.router)
     }
 
     // starts the server and tells the terminal to post a message that the server is running and on what port
