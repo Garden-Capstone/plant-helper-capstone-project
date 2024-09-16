@@ -143,8 +143,8 @@ export default function Details() {
                         <Footer.Copyright className="text-[#F9F7EF] hover:font-bold" href="#" by="PlantWhisperer™"
                                           year={2024}/>
                         <Footer.LinkGroup className="text-[#F9F7EF] hidden md:flex">
-                            <Footer.Link className="hover:font-bold" href="#">Home</Footer.Link>
-                        <Footer.Link className="hover:font-bold" href="#">Questionnaire</Footer.Link>
+                            <Footer.Link className="hover:font-bold" href="/">Home</Footer.Link>
+                        <Footer.Link className="hover:font-bold" href="/questions">Questionnaire</Footer.Link>
                     </Footer.LinkGroup>
                 </Footer>
             </div>
