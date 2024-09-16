@@ -25,9 +25,4 @@ router.route('/:plantName').get(getPlantsByPlantName)
 
 export const plantRoute = {basePath, router}
 
-function getPlantByPlantQuestionnaire() {
-
-}
-
-router.route('/api/plant/plant.model').get(getPlantsByPlantQuestionnaire)
-
+router.route('/plants/questionnaire').post(getPlantsByPlantQuestionnaire)

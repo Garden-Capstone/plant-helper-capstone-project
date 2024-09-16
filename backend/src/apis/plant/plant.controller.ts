@@ -1,9 +1,16 @@
 
 import {Request, Response} from "express";
 import {Status} from "../../utils/interfaces/Status";
-import {selectAllPlants, selectPlantByPlantId, selectPlantByPlantSpecies, selectPlantsByPlantName} from "./plant.model";
+import {
+    selectAllPlants,
+    selectPlantByPlantId,
+
+    selectPlantsByPlantName,
+    selectPlantsByQuestionnaire
+} from "./plant.model";
 import {z} from "zod";
 import {zodErrorResponse} from "../../utils/response.utils";
+import {QuestionnaireSchema} from "./questionnaire.validator";
 
 export async function getAllPlants(request: Request, response: Response) : Promise<Response<Status>> {
 
@@ -101,8 +108,7 @@ export async function getPlantByPlantSpecies(request: Request, response: Respons
      }
 
      const plantSpecies = validationResult.data
-     const data = await selectPlantByPlantSpecies(plantSpecies)
-     return response.json({status: 200, message: null, data})
+     return response.json({status: 200, message: null, data:'lol'})
 
  } catch (error) {
      return response.json({
@@ -114,22 +120,21 @@ export async function getPlantByPlantSpecies(request: Request, response: Respons
 }
 
 
+
 export async function getPlantsByPlantQuestionnaire(request: Request, response: Response): Promise<Response<Status>> {
-    const { sunlight, watering, growthRate } = request.query;
+
     try {
-        const plantRepository = AppDataSource.getRepository(Plant);
-        const queryBuilder = plantRepository.createQueryBuilder('plant');
-        if (sunlight) {
-            queryBuilder.andWhere('plant.plantSunlight IN (:...sunlight)', { sunlight: (sunlight as string).split(',') });
+
+        // validate request.body using the questionnaireValidator
+        const validationResult = QuestionnaireSchema.safeParse(request.body)
+        if (!validationResult.success) {
+            return zodErrorResponse(response, validationResult.error)
         }
-        if (watering) {
-            queryBuilder.andWhere('plant.plantWatering = :watering', { watering });
-        }
-        if (growthRate) {
-            queryBuilder.andWhere('plant.plantGrowthRate = :growthRate', { growthRate });
-        }
-        const plants = await queryBuilder.getMany();
-        return response.json({ status: 200, message: null, data: plants });
+        const plantQuestionnaire = validationResult.data
+        const data = await selectPlantsByQuestionnaire(plantQuestionnaire)
+
+        return response.json({ status: 200, message: null, data });
+
     } catch (error) {
         console.error('Error fetching plants:', error);
         return response.status(500).json({ status: 500, message: 'An error occurred while fetching plants.', data: [] });

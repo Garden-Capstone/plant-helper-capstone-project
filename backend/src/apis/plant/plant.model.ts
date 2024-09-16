@@ -1,6 +1,7 @@
 import {z} from "zod";
 import {sql} from "../../utils/database.utils";
 import {PrivateProfileSchema} from "../profiles/profile.model";
+import {Questionnaire} from "./questionnaire.validator";
 
 /*
 * @property plantId {string} the primary key
@@ -130,3 +131,9 @@ export async function insertPlant (plant : Plant) : Promise<string> {
     return 'Plant successfully added'
 }
 
+export async function selectPlantsByQuestionnaire(questionnaire: Questionnaire): Promise<Plant[]> {
+    const {plantWatering, plantSunlight, plantGrowthRate} =questionnaire
+    const rowList = <Plant[]>await sql`SELECT plant_id, plant_name, plant_species, plant_description, plant_image_url, plant_watering, plant_sunlight, plant_growth_rate, plant_toxicity, plant_propagation, plant_maintenance FROM plant WHERE plant_watering = ${plantWatering}, and plant_sunlight =?& array[${plantSunlight}], and  plant_growth_rate = ${plantGrowthRate}`
+    return PlantSchema.array().parse(rowList)
+
+}
