@@ -5,7 +5,6 @@ import {fetchPlantByPlantId} from "@/utils/models/plant/plant.model";
 import {SearchDetailsNav} from "@/app/components/navigation/SearchDetailsNav";
 import {Footer} from "@/app/footercomponent/Footer";
 import {AddPlantButton} from "@/app/components/navigation/AddPlantButton";
-import PlantDescription from "@/app/user-plant/component/plantdescription";
 
 export default async function Details(props: PageProps<{plantId:string}>) {
     const plantId = props.params.plantId
