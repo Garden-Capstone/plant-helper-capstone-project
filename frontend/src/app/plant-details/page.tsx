@@ -144,8 +144,6 @@ export default function Details() {
                                           year={2024}/>
                         <Footer.LinkGroup className="text-[#F9F7EF] hidden md:flex">
                             <Footer.Link className="hover:font-bold" href="#">Home</Footer.Link>
-                            <Footer.Link className="hover:font-bold" href="/login">Login</Footer.Link>
-                            <Footer.Link className="hover:font-bold" href="#">Sign Up</Footer.Link>
                         <Footer.Link className="hover:font-bold" href="#">Questionnaire</Footer.Link>
                     </Footer.LinkGroup>
                 </Footer>
