@@ -9,6 +9,7 @@ import {DisplayError} from "@/app/components/DisplayError";
 import {DisplayStatus} from "@/app/components/navigation/DisplayStatus";
 import Link from "next/link";
 import {useState} from "react";
+import {FormDebugger} from "@/app/components/FormDebugger";
 
 
 
@@ -79,6 +80,7 @@ export function EditProfileFormContent(props: FormikProps<FormSchema>) {
         handleChange,
         handleBlur,
         handleSubmit,
+        setFieldValue
     } = props
 
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
@@ -97,21 +99,22 @@ export function EditProfileFormContent(props: FormikProps<FormSchema>) {
             if (response.ok) {
                 router.push('/login');
             } else {
-                console.error('Failed to log out');
+                console.error('Failed to log out')
             }
         } catch (error) {
-            console.error('Error logging out:', error);
+            console.error('Error logging out:', error)
         }
-    };
+    }
 
 
     {/*This section is the code for the picture*/}
-    const [profilePic, setProfilePic] = useState("https://images.unsplash.com/photo-1611866759729-0cba525f9b45?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D/100");
+    const [profilePic, setProfilePic] = useState(values.profileImage || "https://images.unsplash.com/photo-1611866759729-0cba525f9b45?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D/100");
 
     {/*This code is for the picture selection*/}
-    const handlePictureSelect = ({url}: { url: any }) => {
-        setProfilePic(url);
-    };
+    const handlePictureSelect = ({url}: { url: string }) => {
+        setProfilePic(url)
+        setFieldValue('profileImage', url)
+    }
 
     {/*Image placeholder array*/}
     const pictures = [
@@ -133,6 +136,7 @@ export function EditProfileFormContent(props: FormikProps<FormSchema>) {
             <div className="flex flex-col items-center justify-center bg-[#f9f7ef]">
                 <div className="flex flex-col items-center mx-14 my-10">
                     <img
+
                         src={profilePic}
                         alt="Profile"
                         className="w-40 h-40 rounded-full border-2 border-[#f9f7ef]"/>
@@ -159,9 +163,21 @@ export function EditProfileFormContent(props: FormikProps<FormSchema>) {
                                 src={url}
                                 alt={`Profile option ${index + 1}`}
                                 className="w-20 h-20 cursor-pointer border-2 border-[#f9f7ef] rounded-full"
-                                onClick={() => handlePictureSelect({url: url})}
+                                onClick={() =>  {
+
+
+                                    handlePictureSelect({url: url})
+                                    setFieldValue('profileImage', url)
+                                    setIsModalOpen(false)
+
+
+                                }}
                             />
                         ))}
+
+
+
+
                     </div>
                 </Modal.Body>
             </Modal>
@@ -227,6 +243,7 @@ export function EditProfileFormContent(props: FormikProps<FormSchema>) {
             </div>
             </form>
             <DisplayStatus status={status} />
+            <FormDebugger {...props} />
         </>
     )
 }

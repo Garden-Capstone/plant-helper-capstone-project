@@ -1,9 +1,9 @@
 'use client'
 import {z} from "zod";
 import {useRouter} from "next/navigation";
-import {Formik, FormikHelpers, FormikProps} from "formik";
+import {Formik, FormikHelpers} from "formik";
 import React from "react";
-import {FloatingLabel} from "flowbite-react";
+
 
 const formSchema = z.object ({
     searchTerm: z.string().max(97, {message: 'Not a searchable term'})
@@ -51,23 +51,21 @@ function SearchFormContent(props: any) {
     return(
         <>
 
-                <div className="text-[#F9F7EF] mt-2">
-                    <form onSubmit={handleSubmit}>
-                        <FloatingLabel
-                            variant="outlined"
-                            label="Search Plants..."
-                            style={{width: '400px'}}
-                            className="bg-[#2C6E49] text-[#F9F7EF] hover:text-[#F9F7EF] focus:text-[#F9F7EF] focus:ring-4 focus:ring-[#F9F7EF]"
-                            name={'searchTerm'}
-                            value={values.searchTerm}
-                            onBlur={handleBlur}
-                            onChange={handleChange}
-                            id='searchTerm'
-                            type='text'
-                        />
-                    </form>
+            <form onSubmit={handleSubmit} className="mx-auto w-64 hidden md:block">
+                <label htmlFor="default-search"></label>
+                <div className="relative">
+                    <input type="text"
+                           id="searchTerm"
+                           className="block w-full p-3 text-white bg-[#2C6E49] border border-white hover:border-2 rounded-lg focus:ring-white focus:border-white placeholder-white"
+                           placeholder="Search"
+                           name={'searchTerm'}
+                           value={values.searchTerm}
+                           onBlur={handleBlur}
+                           onChange={handleChange}
+                           required
+                    />
                 </div>
-
+            </form>
         </>
     )
 }

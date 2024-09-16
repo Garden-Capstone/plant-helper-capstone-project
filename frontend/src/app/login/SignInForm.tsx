@@ -124,7 +124,7 @@ function SignInFormContent(props: FormikProps<FormSchema>) {
                 </Button>
                 <div className="mt-7 mb-8 text-sm">
                     <span>Don't have an account? </span>
-                    <a href="/frontend/public" className="text-[#FF9999] hover:text-[#f7b8b7] font-bold">Sign up </a>
+                    <a href="/user-intake" className="text-[#FF9999] hover:text-[#f7b8b7] font-bold">Sign up </a>
                     <span>and Dig In!</span>
                 </div>
                 <DisplayStatus status={status}/>

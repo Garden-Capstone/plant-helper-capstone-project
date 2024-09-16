@@ -137,8 +137,6 @@ export default function Details() {
                             </p>
                         </div>
                     </div>
-
-
                     <Footer container className="bg-[#DAA520] p-5 mt-11">
                         <Footer.Copyright className="text-[#F9F7EF] hover:font-bold" href="#" by="PlantWhisperer™"
                                           year={2024}/>

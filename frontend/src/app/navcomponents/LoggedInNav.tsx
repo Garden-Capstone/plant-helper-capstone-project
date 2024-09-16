@@ -1,7 +1,8 @@
 'use client'
-import {FloatingLabel, Navbar} from "flowbite-react";
+import { Navbar} from "flowbite-react";
 import {PiPottedPlantBold} from "react-icons/pi";
-import {useState} from "react";
+import React, {useState} from "react";
+import {SearchForm} from "@/app/search-results/SearchForm";
 
 
 export function LoggedInNav() {
@@ -19,11 +20,7 @@ export function LoggedInNav() {
                 </Navbar.Brand>
                 <div className="flex md:order-2 items-center space-x-4">
                     <div className="hidden md:block text-[#F9F7EF]">
-                        <FloatingLabel
-                            variant="outlined"
-                            label="Search"
-                            style={{width: '300px'}}
-                            className="bg-[#2C6E49] text-[#F9F7EF] hover:text-[#F9F7EF] focus:text-[#F9F7EF] focus:ring-4 focus:ring-[#F9F7EF]"/>
+                        <SearchForm/>
                     </div>
                     <svg
                         className="w-6 h-6 text-[#2C6E49] md:hidden"
@@ -51,12 +48,9 @@ export function LoggedInNav() {
                 <Navbar.Collapse>
                     <Navbar.Link className="text-[#F9F7EF] text-lg md:text-lg md:py-2 navbar-link" href="/">Home</Navbar.Link>
                     <Navbar.Link className="text-[#F9F7EF] text-lg md:text-lg md:py-2 navbar-link" href="/questions">Questionnaire</Navbar.Link>
+                    <Navbar.Link className="text-[#F9F7EF] text-lg md:text-lg md:py-2 navbar-link" href="/settings">Settings</Navbar.Link>
                     <div className="text-[#F9F7EF] mt-2 md:hidden">
-                        <FloatingLabel
-                            variant="outlined"
-                            label="Search"
-                            style={{width: '400px'}}
-                            className="bg-[#2C6E49] text-[#F9F7EF] hover:text-[#F9F7EF] focus:text-[#F9F7EF] focus:ring-4 focus:ring-[#F9F7EF]"/>
+                        <SearchForm/>
                     </div>
                 </Navbar.Collapse>
             </Navbar>
