@@ -1,9 +1,10 @@
 import {PlantSchema} from "@/utils/models/plant/plant.validator";
+import {LockerSchema} from "@/utils/models/locker/locker.validator";
 
 
 export async function fetchLockersByProfileId (profileId: string) {
 
-    const {data} = await fetch(`${process.env.PUBLIC_API_URL}/apis/locker/${profileId}`,{
+    const {data} = await fetch(`${process.env.PUBLIC_API_URL}/apis/locker/lockerProfileId/${profileId}`,{
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -15,6 +16,6 @@ export async function fetchLockersByProfileId (profileId: string) {
             return response.json()
         }
     })
-    return PlantSchema.array().parse(data)
+    return LockerSchema.array().parse(data)
 }
 

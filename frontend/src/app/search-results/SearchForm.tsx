@@ -9,7 +9,6 @@ const formSchema = z.object ({
     searchTerm: z.string().max(97, {message: 'Not a searchable term'})
 })
 
-
 export function SearchForm() {
 
     const router = useRouter()

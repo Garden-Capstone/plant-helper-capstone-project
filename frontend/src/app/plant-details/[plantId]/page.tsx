@@ -4,7 +4,7 @@ import React from "react";
 import {fetchPlantByPlantId} from "@/utils/models/plant/plant.model";
 import {SearchDetailsNav} from "@/app/components/navigation/SearchDetailsNav";
 import {Footer} from "@/app/footercomponent/Footer";
-import {AddPlantButton} from "@/app/components/navigation/AddPlantButton";
+import {AddPlantButton} from "@/app/plant-details/[plantId]/AddPlantButton/AddPlantButton";
 
 export default async function Details(props: PageProps<{plantId:string}>) {
     const plantId = props.params.plantId
