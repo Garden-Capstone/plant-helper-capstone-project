@@ -1,5 +1,4 @@
 
-import {Card} from "flowbite-react";
 import {Plant} from "@/utils/models/plant/plant.validator";
 import Link from "next/link";
 

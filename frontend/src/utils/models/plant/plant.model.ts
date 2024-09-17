@@ -7,7 +7,7 @@ import {Plant, PlantSchema} from "@/utils/models/plant/plant.validator";
 
 export async function fetchAllPlants() : Promise<Plant[]> {
     const {data} = await fetch(`${process.env.PUBLIC_API_URL}/apis/plant/`,{
-        method: "get",
+        method: 'GET',
         headers: {
             'Content-Type': 'application/json',
         }
