@@ -18,27 +18,30 @@ export default function TopSection() {
                 }}
             ></div>
             <Card className="flex max-w-lg mx-auto mt-20 overflow-hidden bg-white bg-opacity-90 shadow-2xl">
-                <div className="flex justify-center pt-16 text-[#2E8B57] text-5xl font-serif">
+                <div className="flex justify-center pt-16 text-[#2E8B57] text-4xl md:text-5xl font-serif">
                     <PiPottedPlantBold className="text-[#2E8B57]"/>
                     <p>Plant Whisperer</p>
                 </div>
                 <div>
                     <p className="flex justify-center pb-14 text-[#2E8B57] font-bold">Helping Build Relationships Between Plants and People!</p>
                 </div>
-
-                <Button className="bg-[#FF9999] enabled:hover:bg-[#3CB371]">
+                <a href="/login">
+                <Button className="bg-[#FF9999] enabled:hover:bg-[#3CB371] w-full">
                     LogIn! Welcome Back
                 </Button>
-
-                <Button className="bg-[#FF9999] enabled:hover:bg-[#3CB371]">
+                </a>
+                <a href="/user-intake">
+                <Button className="bg-[#FF9999] enabled:hover:bg-[#3CB371] w-full">
                     I have a plant
                     and would like to learn more
                 </Button>
-
-                <Button className="bg-[#FF9999] enabled:hover:bg-[#3CB371]">
+                </a>
+                <a href="/user-intake">
+                <Button className="bg-[#FF9999] enabled:hover:bg-[#3CB371] w-full">
                     I do not have a plant
                     but I would like to
                 </Button>
+                </a>
             </Card>
         </>
     );

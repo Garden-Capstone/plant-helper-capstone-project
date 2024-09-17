@@ -8,7 +8,7 @@ export default async function testNav() {
         <>
             <MainNav/>
             <p>TEST</p>
-        <LoggedInNav/>
+            <LoggedInNav/>
         </>
 
     )

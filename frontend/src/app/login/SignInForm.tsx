@@ -18,7 +18,8 @@ const formSchema = z.object({
     profileEmail: z.string({
         required_error: 'email is required to sign in',
         invalid_type_error:"email must be a text"
-    }).email({ message: 'please provide a valid email (max 128 characters)'})
+    }).email({ message: 'please provide a valid email (max 128 characters)'}),
+
 })
 
 type FormSchema = z.infer<typeof formSchema>

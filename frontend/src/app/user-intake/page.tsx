@@ -16,7 +16,7 @@ export default function () {
                 }}
             ></div>
             <Card className="flex max-w-lg mx-auto mt-20 overflow-hidden bg-white bg-opacity-90 shadow-2xl">
-                <div className="flex justify-center pt-16 text-[#2E8B57] text-5xl font-serif">
+                <div className="flex justify-center pt-16 text-[#2E8B57] text-4xl md:text-5xl font-serif">
                     <PiPottedPlantBold className="text-[#2E8B57]"/>
                     <p>Plant Whisperer</p>
                 </div>

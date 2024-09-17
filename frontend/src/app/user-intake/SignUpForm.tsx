@@ -13,7 +13,7 @@ import {DisplayStatus} from "@/app/components/navigation/DisplayStatus";
 
 
 const SignUpSchema = ProfileSchema
-    .omit({profileId: true, profileImageUrl: true, profileGoal: true})
+    .omit({profileId: true, profileImage: true, profileGoal: true})
     .extend({
         profileEmail: z.string({
             required_error: 'profileEmail is required',

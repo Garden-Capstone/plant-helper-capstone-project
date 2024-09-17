@@ -5,6 +5,7 @@ import React, {useState} from "react";
 import {SearchForm} from "@/app/search-results/SearchForm";
 
 
+
 export function LoggedInNav() {
 
     const [profilePic] = useState('https://images.unsplash.com/photo-1611866759729-0cba525f9b45?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D/100g');
@@ -38,17 +39,20 @@ export function LoggedInNav() {
                     <Navbar.Toggle/>
                     <div className="md:flex items-center">
                         <a href="/plant-locker">
-                        <img
-                            src={profilePic}
-                            alt="Profile"
-                            className="w-14 h-14 rounded-full border-2 border-[#F9F7EF] hover:border-4 object-cover cursor-pointer"/>
+                            <img
+                                src={profilePic}
+                                alt="Profile"
+                                className="w-14 h-14 rounded-full border-2 border-[#F9F7EF] hover:border-4 object-cover cursor-pointer"/>
                         </a>
                     </div>
                 </div>
                 <Navbar.Collapse>
-                    <Navbar.Link className="text-[#F9F7EF] text-lg md:text-lg md:py-2 navbar-link" href="/">Home</Navbar.Link>
-                    <Navbar.Link className="text-[#F9F7EF] text-lg md:text-lg md:py-2 navbar-link" href="/questions">Questionnaire</Navbar.Link>
-                    <Navbar.Link className="text-[#F9F7EF] text-lg md:text-lg md:py-2 navbar-link" href="/settings">Settings</Navbar.Link>
+                    <Navbar.Link className="text-[#F9F7EF] text-lg md:text-lg md:py-2 navbar-link"
+                                 href="/">Home</Navbar.Link>
+                    <Navbar.Link className="text-[#F9F7EF] text-lg md:text-lg md:py-2 navbar-link"
+                                 href="/questions">Questionnaire</Navbar.Link>
+                    <Navbar.Link className="text-[#F9F7EF] text-lg md:text-lg md:py-2 navbar-link"
+                                 href="/settings">Settings</Navbar.Link>
                     <div className="text-[#F9F7EF] mt-2 md:hidden">
                         <SearchForm/>
                     </div>

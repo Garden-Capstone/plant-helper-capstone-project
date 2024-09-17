@@ -2,6 +2,7 @@
 import { Card } from "flowbite-react"
 import {PiPottedPlantBold} from "react-icons/pi";
 import {SignInForm} from "@/app/login/SignInForm";
+import MainNav from "@/app/navcomponents/MainNav";
 
 export default function Login() {
     return (
@@ -13,17 +14,18 @@ export default function Login() {
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     zIndex: '-1'
-                }}
-            ></div>
+                }}>
+            </div>
             <Card className="flex max-w-lg mx-auto mt-20 overflow-hidden bg-white bg-opacity-90 shadow-2xl">
-                <div className="flex justify-center pt-16 text-[#2E8B57] text-5xl font-serif">
-                    <PiPottedPlantBold className="text-[#2E8B57]"/>
-                    <p>Plant Whisperer</p>
-                </div>
-                <div>
-                    <p className="flex justify-center pb-14 text-[#2E8B57] font-bold">Replanting Your Garden Goals? Log In!</p>
-                    <SignInForm/>
-                </div>
+                    <div className="flex justify-center pt-16 text-[#2E8B57] text-4xl md:text-5xl font-serif">
+                        <PiPottedPlantBold className="text-[#2E8B57]"/>
+                        <p>Plant Whisperer</p>
+                    </div>
+                    <div>
+                        <p className="flex justify-center pb-14 text-[#2E8B57] font-bold">Replanting Your Garden Goals?
+                            Log In!</p>
+                        <SignInForm/>
+                    </div>
             </Card>
         </>
     );

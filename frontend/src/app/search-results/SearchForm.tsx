@@ -51,12 +51,12 @@ function SearchFormContent(props: any) {
     return(
         <>
 
-            <form onSubmit={handleSubmit} className="mx-auto w-64 hidden md:block">
+            <form onSubmit={handleSubmit} className="mx-auto">
                 <label htmlFor="default-search"></label>
                 <div className="relative">
                     <input type="text"
                            id="searchTerm"
-                           className="block w-full p-3 text-white bg-[#2C6E49] border border-white hover:border-2 rounded-lg focus:ring-white focus:border-white placeholder-white"
+                           className="block w-full p-3 md:w-96 text-white bg-[#2C6E49] border border-white hover:border-2 rounded-lg focus:ring-white focus:border-white placeholder-white"
                            placeholder="Search"
                            name={'searchTerm'}
                            value={values.searchTerm}

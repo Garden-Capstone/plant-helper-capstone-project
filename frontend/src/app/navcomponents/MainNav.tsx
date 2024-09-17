@@ -2,6 +2,7 @@
 import {Navbar} from "flowbite-react";
 import {PiPottedPlantBold} from "react-icons/pi";
 import React from "react";
+import {SearchForm} from "@/app/search-results/SearchForm";
 
 export default function MainNav() {
 
@@ -15,17 +16,9 @@ export default function MainNav() {
                         </span>
                 </Navbar.Brand>
                 <div className="flex md:order-2 items-center space-x-4">
-
-                    {/*new search bar*/}
-                    <form className="mx-auto w-64 hidden md:block">
-                        <label htmlFor="default-search"></label>
-                        <div className="relative">
-                            <input type="search"
-                                   id="default-search"
-                                   className="block w-full p-3 text-white bg-[#2C6E49] border border-white hover:border-2 rounded-lg focus:ring-white focus:border-white placeholder-white"
-                                   placeholder="Search" required/>
-                        </div>
-                    </form>
+                    <div className="hidden md:block text-[#F9F7EF]">
+                        <SearchForm/>
+                    </div>
                     <svg
                         className="w-6 h-6 text-[#2C6E49] md:hidden"
                         aria-hidden="true"
@@ -42,20 +35,12 @@ export default function MainNav() {
                     <Navbar.Toggle/>
                 </div>
                 <Navbar.Collapse>
-                    <Navbar.Link className="text-[#F9F7EF] navbar-link" href="#">Home</Navbar.Link>
-                    <Navbar.Link className="text-[#F9F7EF] navbar-link" href="#">Login</Navbar.Link>
-                    <Navbar.Link className="text-[#F9F7EF] navbar-link" href="#">Sign Up</Navbar.Link>
-                    <Navbar.Link className="text-[#F9F7EF] navbar-link" href="#">Questionnaire</Navbar.Link>
+                    <Navbar.Link className="text-[#F9F7EF] navbar-link" href="/">Home</Navbar.Link>
+                    <Navbar.Link className="text-[#F9F7EF] navbar-link" href="/login">Login</Navbar.Link>
+                    <Navbar.Link className="text-[#F9F7EF] navbar-link" href="/user-intake">Sign Up</Navbar.Link>
+                    <Navbar.Link className="text-[#F9F7EF] navbar-link" href="/questions">Questionnaire</Navbar.Link>
                     <div className="text-[#F9F7EF] mt-2 md:hidden">
-                        <form className="max-w-md mx-auto">
-                            <label htmlFor="default-search"></label>
-                            <div className="relative">
-                                <input type="search"
-                                       id="default-search"
-                                       className="block w-full p-3 text-white bg-[#2C6E49] border border-white hover:border-2 rounded-lg focus:ring-white focus:border-white placeholder-white"
-                                       placeholder="Search" required/>
-                            </div>
-                        </form>
+                        <SearchForm/>
                     </div>
                 </Navbar.Collapse>
             </Navbar>
