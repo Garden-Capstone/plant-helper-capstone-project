@@ -64,12 +64,10 @@ export const PublicProfileSchema = PrivateProfileSchema.omit({profileHash: true,
 export type PublicProfile = z.infer<typeof PublicProfileSchema>
 
 export async function insertProfile (profile: PrivateProfile): Promise<string> {
+    const {profileUsername, profileImage, profileHash, profileActivationToken, profileGoal, profileEmail} = profile
 
-const {profileId, profileUsername, profileImage, profileHash, profileActivationToken, profileGoal, profileEmail} = profile
-
-await sql`INSERT INTO profile (profile_id, profile_username, profile_image, profile_hash, profile_activation_token, profile_goal, profile_email) VALUES (${profileId}, ${profileUsername}, ${profileImage}, ${profileHash}, ${profileActivationToken}, ${profileGoal}, ${profileEmail}
-)`
-return 'Profile Successfully Created'
+    await sql`INSERT INTO profile (profile_id, profile_username, profile_image, profile_hash, profile_activation_token, profile_goal, profile_email) VALUES (gen_random_uuid() , ${profileUsername}, ${profileImage}, ${profileHash}, ${profileActivationToken}, ${profileGoal}, ${profileEmail})`
+    return 'Profile Successfully Created'
 }
 
 export async function updateProfile (profile: PrivateProfile) : Promise<string> {
