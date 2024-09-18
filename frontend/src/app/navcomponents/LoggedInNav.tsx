@@ -3,12 +3,13 @@ import { Navbar} from "flowbite-react";
 import {PiPottedPlantBold} from "react-icons/pi";
 import React, {useState} from "react";
 import {SearchForm} from "@/app/search-results/SearchForm";
+import {Session} from "@/utils/session.utils";
 
 
 
-export function LoggedInNav() {
+export function LoggedInNav(props: { session: Session }) {
 
-    const [profilePic] = useState('https://images.unsplash.com/photo-1611866759729-0cba525f9b45?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D/100g')
+    const {session} = props;
 
     return (
         <>
@@ -40,7 +41,7 @@ export function LoggedInNav() {
                     <div className="md:flex items-center">
                         <a href="/plant-locker">
                             <img
-                                src={profilePic}
+                                src={session?.profile.profileImage ?? 'https://images.unsplash.com/photo-1611866759729-0cba525f9b45?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D/100'}
                                 alt="Profile"
                                 className="w-14 h-14 rounded-full border-2 border-[#F9F7EF] hover:border-4 object-cover cursor-pointer"/>
                         </a>

@@ -36,7 +36,7 @@ export default function EditProfileForm({ authorization, profile } : Props) {
         const {profileUsername, profileGoal, profileImage} = formValues;
         const {setStatus, resetForm} = actions;
 
-        fetch(`/apis/profile/${profile.profileId}`, {
+        fetch(`/api/profile/${profile.profileId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -54,8 +54,8 @@ export default function EditProfileForm({ authorization, profile } : Props) {
             if (json.status === 200) {
                 resetForm()
                 type = 'success'
-                router.push('/plant-locker')
-                router.refresh()
+
+                location.replace( '/plant-locker')
             }
             setStatus({type, message: json.message})
         })

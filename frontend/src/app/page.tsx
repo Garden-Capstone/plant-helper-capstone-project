@@ -4,6 +4,7 @@ import MainNav from "@/app/navcomponents/MainNav";
 import {HomeSearch} from "@/app/home-page/HomeSearchForm/HomeSearch";
 import {getSession} from "@/utils/session.utils";
 import {LoggedInNav} from "@/app/navcomponents/LoggedInNav";
+import {DisplayNav} from "@/app/navcomponents/DisplayNav";
 
 
 export default async function Home () {
@@ -13,7 +14,7 @@ export default async function Home () {
     return (
         <>
             <div className={'bg-[#2E8B57] sticky justify-evenly gap-12'}>
-                {session ? <LoggedInNav/> : <MainNav/>}
+             <DisplayNav/>
             </div>
             <TopSection/>
             <div className={'flex flex-col justify-center gap-12 my-5 items-center mx-auto'} >

@@ -2,7 +2,7 @@
 import { Card } from "flowbite-react"
 import {PiPottedPlantBold} from "react-icons/pi";
 import {SignUpForm} from "@/app/user-intake/SignUpForm";
-import TestNav from "@/app/navcomponents/page";
+import TestNav from "@/app/navcomponents/DisplayNav";
 
 export default function () {
     return (

@@ -9,6 +9,8 @@ import {SearchDetailsNav} from "@/app/components/navigation/SearchDetailsNav";
 import {Plant} from "@/utils/models/plant/plant.validator";
 import {fetchPlantByPlantId} from "@/utils/models/plant/plant.model";
 import {PageProps} from "@/utils/interfaces/NextComponent";
+import {DisplayNav} from "@/app/navcomponents/DisplayNav";
+
 
 export default async function PlantLocker() {
 
@@ -23,7 +25,7 @@ export default async function PlantLocker() {
 
     return (
         <>
-            <SearchDetailsNav/>
+           <DisplayNav />
             <section className='flex font-serif text-5xl pb-6 pt-6 gap-4 max-w-full
             mx-auto md:mx-14 mt-4 mb-4 border-green-600 text-[#2C6E49]'>
                 <h1 className=' justify-center '>

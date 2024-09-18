@@ -3,6 +3,8 @@
 import {SearchDetailsNav} from "@/app/components/navigation/SearchDetailsNav";
 import {fetchPlantByPlantId} from "@/utils/models/plant/plant.model";
 import {PageProps} from "@/utils/interfaces/NextComponent";
+import ClientNav from "@/app/navcomponents/ClientNav";
+import React from "react";
 
 export default async function UserPlant(props: PageProps<{plantId:string}>) {
 
@@ -11,10 +13,14 @@ export default async function UserPlant(props: PageProps<{plantId:string}>) {
 
     return (
         <>
-            <SearchDetailsNav/>
+            <ClientNav/>
 
             <section className='p-12 float-left'>
-                <img className='max-h-96' src={plant.plantImageUrl} alt={plant.plantName}/>
+                <img
+                    src={plant.plantImageUrl}
+                    alt={plant.plantName}
+                    style={{width: '350px', height: '350px', objectFit: 'cover'}}
+                />
             </section>
 
             <div className="bg-[#F9F7EF]">
@@ -29,7 +35,7 @@ export default async function UserPlant(props: PageProps<{plantId:string}>) {
                 </div>
             </div>
             {/*care instruction*/}
-            <div className="font-lg grid grid-cols-1 md:grid-cols-4 mt-10">
+            <div className="font-lg grid grid-cols-1 md:grid-cols-4 mt-24">
                 <div className="mt-4 mx-10">
                     <h3 className="text-2xl font-semibold mb-2 text-[#2C6E49]">Watering</h3>
                     <p className="text-sm mb-3 text-[#2E8B57]">

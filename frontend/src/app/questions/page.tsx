@@ -1,15 +1,15 @@
-"use client"
+
 
 import React from "react";
 
 import Questionnaire from "@/app/questions/questionnaire";
-import TestNav from "@/app/navcomponents/page";
+import {DisplayNav} from "@/app/navcomponents/DisplayNav";
 
 
 export default function Questions() {
     return (
         <>
-            <TestNav/>
+            <DisplayNav/>
             <Questionnaire/>
         </>
     )

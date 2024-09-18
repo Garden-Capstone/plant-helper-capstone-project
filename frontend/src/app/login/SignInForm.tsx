@@ -1,3 +1,4 @@
+'use client'
 import {Formik, FormikHelpers, FormikProps} from "formik";
 import {toFormikValidationSchema} from "zod-formik-adapter";
 import React from "react";
