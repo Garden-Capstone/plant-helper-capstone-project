@@ -9,7 +9,7 @@ import {DisplayError} from "@/app/components/DisplayError";
 import {DisplayStatus} from "@/app/components/navigation/DisplayStatus";
 import Link from "next/link";
 import {useState} from "react";
-import {FormDebugger} from "@/app/components/FormDebugger";
+import {clearSession} from "@/utils/session.utils";
 
 
 
@@ -89,6 +89,7 @@ export function EditProfileFormContent(props: FormikProps<FormSchema>) {
 
     const handleLogout = async () => {
         try {
+            clearSession()
             const response = await fetch('/apis/sign-out', {
                 method: 'GET',
                 headers: {
@@ -164,20 +165,12 @@ export function EditProfileFormContent(props: FormikProps<FormSchema>) {
                                 alt={`Profile option ${index + 1}`}
                                 className="w-20 h-20 cursor-pointer border-2 border-[#f9f7ef] rounded-full"
                                 onClick={() =>  {
-
-
                                     handlePictureSelect({url: url})
                                     setFieldValue('profileImage', url)
                                     setIsModalOpen(false)
-
-
                                 }}
                             />
                         ))}
-
-
-
-
                     </div>
                 </Modal.Body>
             </Modal>
@@ -243,7 +236,6 @@ export function EditProfileFormContent(props: FormikProps<FormSchema>) {
             </div>
             </form>
             <DisplayStatus status={status} />
-            <FormDebugger {...props} />
         </>
     )
 }

@@ -30,13 +30,13 @@ export default function TopSection() {
                     LogIn! Welcome Back
                 </Button>
                 </a>
-                <a href="/user-intake">
+                <a href="/questions">
                 <Button className="bg-[#FF9999] enabled:hover:bg-[#3CB371] w-full">
                     I have a plant
                     and would like to learn more
                 </Button>
                 </a>
-                <a href="/user-intake">
+                <a href="/questions">
                 <Button className="bg-[#FF9999] enabled:hover:bg-[#3CB371] w-full">
                     I do not have a plant
                     but I would like to
