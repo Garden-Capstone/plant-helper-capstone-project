@@ -1,6 +1,6 @@
 import {z} from "zod";
-import {FormikProps, Formik, FormikHelpers, Field} from "formik";
-import {Button, Label, Radio, Select, TextInput} from "flowbite-react";
+import {Formik, FormikHelpers} from "formik";
+import {Button, Select} from "flowbite-react";
 import {DisplayStatus} from "@/app/components/navigation/DisplayStatus";
 import {PlantSchema} from "@/utils/models/plant/plant.validator";
 import React from "react";
@@ -45,7 +45,7 @@ export function QuestionnaireForm() {
 
     const handleSubmit = (values: Form, actions: FormikHelpers<Form> ) => {
         const {setStatus,resetForm} = actions
-        fetch('/apis/questionnaireForm', {
+        fetch('/apis/plant/plants/questionnaireForm', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -69,7 +69,9 @@ export function QuestionnaireForm() {
 
     return(
         <>
-            <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={toFormikValidationSchema(FormSchema)}>
+            <Formik initialValues={initialValues}
+                    onSubmit={handleSubmit}
+                    validationSchema={toFormikValidationSchema(FormSchema)}>
 
                 {QuestionnaireFormContent}
 
@@ -107,23 +109,19 @@ export function QuestionnaireFormContent(props:any) {
                                 onChange={handleChange}
                                 onBlur={handleBlur}
                                 name={'plantSunlight'}
-                            >
-                                <option value={''}>
-
+                                value={values.plantSunlight}>
+                                <option
+                                    value={''}>
                                 </option>
-
                                 <option value={'full sun'}>
                                     full sun
                                 </option>
-
                                 <option value={'part sun'}>
                                     part sun
                                 </option>
-
                                 <option value={'part shade'}>
                                     part shade
                                 </option>
-
                                 <option value={'filtered shade'}>
                                     filtered shade
                                 </option>
@@ -143,23 +141,19 @@ export function QuestionnaireFormContent(props:any) {
                                 onChange={handleChange}
                                 onBlur={handleBlur}
                                 name={'plantWatering'}
-                            >
-                                <option value={''}>
-
+                                value={values.plantWatering}>
+                                <option
+                                    value={''}>
                                 </option>
-
                                 <option value={'Frequent'}>
                                     Frequent
                                 </option>
-
                                 <option value={'Average'}>
                                     Average
                                 </option>
-
                                 <option value={'Minimum'}>
                                     Minimum
                                 </option>
-
                             </Select>
                             <DisplayError field={'plantWatering'} errors={errors} touched={touched}/>
                         </div>
@@ -171,23 +165,19 @@ export function QuestionnaireFormContent(props:any) {
                         </legend>
                         <div className="gap-2">
                             <Select
-
                                 onChange={handleChange}
                                 onBlur={handleBlur}
-                                name={'plantGrowthRate'}
-                            >
-                                <option value={''}>
-
+                                name={'plantGrowthRate'}>
+                                values={values.plantGrowthRate}
+                                <option
+                                    value={''}>
                                 </option>
-
                                 <option value={'Low'}>
                                     Low
                                 </option>
-
                                 <option value={'High'}>
                                     High
                                 </option>
-
                                 <option value={'Moderate'}>
                                     Moderate
                                 </option>
@@ -204,6 +194,7 @@ export function QuestionnaireFormContent(props:any) {
                 <Button color={'green'} type="reset" onClick={handleReset}>Reset</Button>
                 <DisplayStatus status={status}/>
             </form>
+
 
         </>
 

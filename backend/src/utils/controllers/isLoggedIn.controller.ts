@@ -9,6 +9,7 @@ export function isLoggedInController(request: Request, response: Response, next:
     //set a predefined response if the user is not logged in
     const status: Status = {status: 401, message: 'Please login', data: null}
     try {
+        console.log(request.headers)
         // grab the profile off of the session
         const profile: PublicProfile | undefined = request.session?.profile
 

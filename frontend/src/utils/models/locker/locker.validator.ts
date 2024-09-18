@@ -12,10 +12,12 @@ export const LockerSchema = z.object({
     }).uuid({message: 'Please provide a valid UUID'}),
     lockerImageUrl: z.string({
         required_error: 'Locker Plant Image URL is required',
-    }).url({message: 'Please provide a valid Image URL'}),
+    }).url({message: 'Please provide a valid Image URL'})
+        .nullable(),
     lockerName: z.string({
         required_error: 'Locker Name is required',
-    }).max(32, {message: 'Please enter a valid Name'}),
+    }).max(32, {message: 'Please enter a valid Name'})
+        .nullable(),
 })
 
 export type Locker = z.infer<typeof LockerSchema>
