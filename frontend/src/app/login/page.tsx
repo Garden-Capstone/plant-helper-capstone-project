@@ -2,11 +2,12 @@
 import { Card } from "flowbite-react"
 import {PiPottedPlantBold} from "react-icons/pi";
 import {SignInForm} from "@/app/login/SignInForm";
-import MainNav from "@/app/navcomponents/MainNav";
+import TestNav from "@/app/navcomponents/page";
 
 export default function Login() {
     return (
         <>
+            <TestNav/>
             <div
                 className="fixed inset-0 bg-local top-0 left-0 right-0"
                 style={{

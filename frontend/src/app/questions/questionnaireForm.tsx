@@ -6,6 +6,7 @@ import {PlantSchema} from "@/utils/models/plant/plant.validator";
 import React from "react";
 import {DisplayError} from "@/app/components/DisplayError";
 import {toFormikValidationSchema} from "zod-formik-adapter";
+import {useRouter} from "next/navigation";
 
 
 
@@ -41,11 +42,12 @@ export function QuestionnaireForm() {
     /*
     *
      */
-
+const router= useRouter()
 
     const handleSubmit = (values: Form, actions: FormikHelpers<Form> ) => {
+
         const {setStatus,resetForm} = actions
-        fetch('/apis/plant/plants/questionnaireForm', {
+        fetch('/apis/plant/plants/questionnaire', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -56,8 +58,12 @@ export function QuestionnaireForm() {
             .then(data => {
                 const type = 'failure'
                 setStatus({type, message: data.message})
-                if (data.staus === 200) {
+                if (data.status === 200) {
                     resetForm()
+                    console.log(data.data)
+                    const plantIds = data.data.map((plant:any)=> plant.plantId)
+                    console.log(plantIds)
+                    router.push(`/questionnaire-results/?q=${plantIds.join()}`)
                 }
 
             })
@@ -116,14 +122,44 @@ export function QuestionnaireFormContent(props:any) {
                                 <option value={'full sun'}>
                                     full sun
                                 </option>
-                                <option value={'part sun'}>
-                                    part sun
-                                </option>
                                 <option value={'part shade'}>
                                     part shade
                                 </option>
-                                <option value={'filtered shade'}>
-                                    filtered shade
+                                <option value={'part sun/part shade'}>
+                                    part sun/part shade
+                                </option>
+                                <option value={'full shade, part shade]'}>
+                                    full shade, part shade
+                                </option>
+                                <option value={'full sun, part shade'}>
+                                    full sun, part shade
+                                </option>
+                                <option value={'full sun, part sun/part shade'}>
+                                    full sun, part sun/part shade
+                                </option>
+                                <option value={'part shade, filtered shade'}>
+                                    part shade, filtered shade
+                                </option>
+                                <option value={'part shade, full shade'}>
+                                    part shade, full shade
+                                </option>
+                                <option value={'part shade, full sun'}>
+                                    part shade, full sun
+                                </option>
+                                <option value={'part shade, part sun/part shade'}>
+                                    part shade, part sun/part shade
+                                </option>
+                                <option value={'part sun/part shade, filtered shade'}>
+                                    part sun/part shade, filtered shade
+                                </option>
+                                <option value={'part sun/part shade, full sun'}>
+                                    part sun/part shade, full sun
+                                </option>
+                                <option value={'deep shade, filtered shade, part sun/part shade'}>
+                                    deep shade, filtered shade, part sun/part shade
+                                </option>
+                                <option value={'full sun, part shade, full shade'}>
+                                    full sun, part shade, full shade
                                 </option>
                             </Select>
                             <DisplayError field={'plantSunlight'} errors={errors} touched={touched}/>
@@ -190,8 +226,8 @@ export function QuestionnaireFormContent(props:any) {
 
                 </div>
 
-                <Button color={'pink'} type="submit">Submit</Button>
-                <Button color={'green'} type="reset" onClick={handleReset}>Reset</Button>
+                <Button className="bg-[#FF9999] enabled:hover:bg-[#3CB371]" type="submit">Submit</Button>
+                <Button className="bg-[#FF9999] enabled:hover:bg-[#3CB371]" onClick={handleReset}>Reset</Button>
                 <DisplayStatus status={status}/>
             </form>
 

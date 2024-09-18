@@ -151,8 +151,8 @@ export function SignUpFormContent(props: FormikProps<SignUp>) {
                     />
                     <DisplayError errors={errors} touched={touched} field={'profilePasswordConfirm'}/>
                 </div>
-               <Button color={'pink'} type="submit">Submit</Button>
-               <Button color={'pink'} type="reset" onClick={handleReset}>Reset</Button>
+               <Button className="bg-[#FF9999] enabled:hover:bg-[#3CB371]" type="submit">Submit</Button>
+               <Button className="bg-[#FF9999] enabled:hover:bg-[#3CB371]" type="reset" onClick={handleReset}>Reset</Button>
                <DisplayStatus status={status}/>
            </form>
                     {/*<FormDebugger {...props} />*/}

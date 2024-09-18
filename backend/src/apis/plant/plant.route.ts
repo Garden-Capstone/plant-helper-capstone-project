@@ -25,4 +25,4 @@ router.route('/plantsByName/:plantName').get(getPlantsByPlantName)
 
 export const plantRoute = {basePath, router}
 
-router.route('/plants/questionnaireForm').post(getPlantsByPlantQuestionnaire)
+router.route('/plants/questionnaire').post(getPlantsByPlantQuestionnaire)
