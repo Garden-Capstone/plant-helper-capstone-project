@@ -14,6 +14,7 @@ import {lockerRoute} from "./apis/locker/locker.route";
 import {progressRoute} from "./apis/progress/progress.route";
 import {profileRoute} from "./apis/profiles/profile.route";
 
+
 // The following class creates the app and instantiates the server
 export class App {
     app: Application
@@ -33,6 +34,7 @@ export class App {
     // private method that sets the port for the sever, to one from index.route.ts, and external .env file or defaults to 3000
     public settings (): void {
         this.app.set('port', this.port)
+        this.app.set('trust proxy', 2)
     }
 
     // private method to setting up the middleware to handle json responses, one for dev and one for prod
@@ -47,7 +49,10 @@ export class App {
             store: this.redisStore,
             saveUninitialized: false,
             secret: process.env.SESSION_SECRET as string,
-            resave: false
+            resave: false,
+            cookie: {
+                sameSite: 'lax'
+            }
         }))
     }
     // private method for setting up routes in their basic sense (ie. any route that performs an action on profiles starts with /profiles)

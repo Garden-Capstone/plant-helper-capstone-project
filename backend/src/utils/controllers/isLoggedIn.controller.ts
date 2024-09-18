@@ -6,6 +6,7 @@ import {PublicProfile} from "../../apis/profiles/profile.model";
 
 
 export function isLoggedInController(request: Request, response: Response, next: NextFunction): Response | void {
+    console.log(request.cookies)
     //set a predefined response if the user is not logged in
     const status: Status = {status: 401, message: 'Please login', data: null}
     try {

@@ -8,6 +8,7 @@ import {
 import {zodErrorResponse} from "../../utils/response.utils";
 import {Request, Response} from "express";
 import {Status} from "../../utils/interfaces/Status";
+import {generateJwt} from "../../utils/auth.utils";
 
 
 export async function getProfileByProfileIdController(request: Request, response: Response) : Promise<Response<Status>> {
@@ -80,6 +81,16 @@ export async function putProfileController(request: Request, response: Response)
         //update the profile in the database
         await updateProfile(profile)
 
+        const authorization: string = generateJwt({
+            profileId,
+            profileGoal,
+            profileImage,
+            profileUsername
+        }, request.session.signature as string)
+
+        request.session.profile = profile
+        request.session.jwt = authorization
+        response.header({authorization})
         //return a response to the client with a success message
         return response.json({status: 200, message: "profile successfully updated", data: null})
 
