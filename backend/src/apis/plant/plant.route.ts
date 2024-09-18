@@ -17,11 +17,11 @@ router.route('/').get(getAllPlants)
 
 router.route('/:plantId').get(getPlantByPlantId)
 
-router.route('/plantByName/plantName/:plantName').get(getPlantByPlantName)
+router.route('/plantByName/:plantName').get(getPlantByPlantName)
 
 router.route('/plantBySpecies/plantSpecies/:plantSpecies').get(getPlantByPlantSpecies)
 
-router.route('/:plantName').get(getPlantsByPlantName)
+router.route('/plantsByName/:plantName').get(getPlantsByPlantName)
 
 export const plantRoute = {basePath, router}
 
