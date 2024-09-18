@@ -1,18 +1,15 @@
-'use Client'
+"use client"
 
 import React from "react";
-import NavBar from "./navbar";
+
 import Questionnaire from "@/app/questions/questionnaire";
-
-
-
-
+import TestNav from "@/app/navcomponents/page";
 
 
 export default function Questions() {
     return (
         <>
-            <NavBar/>
+            <TestNav/>
             <Questionnaire/>
         </>
     )
