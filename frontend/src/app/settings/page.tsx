@@ -18,7 +18,7 @@ export default async function Settings() {
     return (
         <>
            <ProfileNav/>
-            <EditProfileForm profile={profile} authorization={session?.authorization}/>
+           <EditProfileForm profile={profile} authorization={session?.authorization}/>
         </>
     );
 }
