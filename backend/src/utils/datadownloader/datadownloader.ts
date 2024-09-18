@@ -14,7 +14,6 @@ async function dataDownloader() {
 
             let perenualPlant = await fetch(`https://perenual.com/api/species/details/${item.id}?key=${process.env.PERENUAL_API_KEY}`).then(res => res.json())
 
-            console.log(perenualPlant)
             if (perenualPlant.default_image === null) continue
 
             const plant: Plant = {

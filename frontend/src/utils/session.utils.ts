@@ -25,7 +25,7 @@ export async function getSession(): Promise<Session|undefined > {
 
     const cookieStore = cookies()
     const jwtToken = cookieStore.get("jwt-token")
-    console.log(jwtToken)
+
     if ( jwtToken) {
         return  setJwtToken(jwtToken.value)
 

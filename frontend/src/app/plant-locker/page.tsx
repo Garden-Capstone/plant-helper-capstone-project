@@ -35,7 +35,7 @@ export default async function PlantLocker() {
                     <div className='text-5xl bg-[#2C6E49] font-bold py-3 font-serif text-center' >
                         <h5 className='text-white'>Plant Locker</h5>
                     </div>
-                    <div className='container py-10 max-w-full mx-6 justify-center gap-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
+                    <div className='container py-10 max-w-full bg-[#F9F7EF] mx-6 justify-center gap-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
                         {lockers.map(locker => <UserPlantCard key={locker.lockerProfileId} locker={locker}/>)}
                     </div>
                 </div>

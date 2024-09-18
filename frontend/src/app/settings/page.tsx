@@ -13,7 +13,7 @@ export default async function Settings() {
     if (!session || !profile) {
         return(redirect('/sign-in'))
     }
-    console.log(profile)
+
 
     return (
         <>
