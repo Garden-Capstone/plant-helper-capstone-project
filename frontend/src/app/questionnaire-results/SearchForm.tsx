@@ -23,6 +23,8 @@ export function SearchForm() {
 
         router.push (`/search-results/?q=${searchTerm}`)
 
+     // todo get access to the router object using useRouter (on the top of SearchForm)
+        // using the router object redirect to the search results page with searchTerm = searchParam (q)
 
     }
 
