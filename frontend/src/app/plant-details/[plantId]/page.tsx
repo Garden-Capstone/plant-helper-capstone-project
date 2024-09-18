@@ -4,6 +4,7 @@ import {fetchPlantByPlantId} from "@/utils/models/plant/plant.model";
 import {AddPlantButton} from "@/app/plant-details/[plantId]/AddPlantButton/AddPlantButton";
 import {getSession, Session} from "@/utils/session.utils";
 import ClientNav from "@/app/navcomponents/ClientNav";
+import {ToastError} from "@/app/plant-details/[plantId]/AddPlantButton/ToastError";
 
 
 
@@ -36,6 +37,7 @@ export default async function Details(props: PageProps<{plantId:string}>) {
                     {/*Add plant to locker Button*/}
                     <div className='pt-4 pr-10 ml-14'>
                         <AddPlantButton session={session} plantId={plantId}/>
+                        {/*<ToastError session={undefined}/>*/}
                     </div>
                     <div
                         className="mx-14 mt-6 md:text-md xl:text-xl text-md bg-[#F9F7EF] text-[#2C6E49] mb-16 md:mb-44">

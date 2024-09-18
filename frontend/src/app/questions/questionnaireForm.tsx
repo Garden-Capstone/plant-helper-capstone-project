@@ -128,39 +128,7 @@ export function QuestionnaireFormContent(props:any) {
                                 <option value={'part sun/part shade'}>
                                     part sun/part shade
                                 </option>
-                                <option value={'full shade, part shade]'}>
-                                    full shade, part shade
-                                </option>
-                                <option value={'full sun, part shade'}>
-                                    full sun, part shade
-                                </option>
-                                <option value={'full sun, part sun/part shade'}>
-                                    full sun, part sun/part shade
-                                </option>
-                                <option value={'part shade, filtered shade'}>
-                                    part shade, filtered shade
-                                </option>
-                                <option value={'part shade, full shade'}>
-                                    part shade, full shade
-                                </option>
-                                <option value={'part shade, full sun'}>
-                                    part shade, full sun
-                                </option>
-                                <option value={'part shade, part sun/part shade'}>
-                                    part shade, part sun/part shade
-                                </option>
-                                <option value={'part sun/part shade, filtered shade'}>
-                                    part sun/part shade, filtered shade
-                                </option>
-                                <option value={'part sun/part shade, full sun'}>
-                                    part sun/part shade, full sun
-                                </option>
-                                <option value={'deep shade, filtered shade, part sun/part shade'}>
-                                    deep shade, filtered shade, part sun/part shade
-                                </option>
-                                <option value={'full sun, part shade, full shade'}>
-                                    full sun, part shade, full shade
-                                </option>
+
                             </Select>
                             <DisplayError field={'plantSunlight'} errors={errors} touched={touched}/>
                         </div>
