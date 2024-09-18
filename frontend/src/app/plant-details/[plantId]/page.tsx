@@ -5,13 +5,15 @@ import {fetchPlantByPlantId} from "@/utils/models/plant/plant.model";
 import {SearchDetailsNav} from "@/app/components/navigation/SearchDetailsNav";
 import {Footer} from "@/app/footercomponent/Footer";
 import {AddPlantButton} from "@/app/plant-details/[plantId]/AddPlantButton/AddPlantButton";
+import {getSession, Session} from "@/utils/session.utils";
+
 
 export default async function Details(props: PageProps<{plantId:string}>) {
     const plantId = props.params.plantId
-
-    console.log('plantId', plantId)
     const plant = await fetchPlantByPlantId(plantId);
-    console.log(plant)
+    // @ts-ignore
+    const session : Session = await getSession();
+
     return (
         <>
 
@@ -28,7 +30,7 @@ export default async function Details(props: PageProps<{plantId:string}>) {
                 </div>
                 {/*Add plant to locker Button*/}
                 <div className='flex flex-wrap justify-end pt-10 pr-10'>
-                    <AddPlantButton/>
+                    <AddPlantButton session={session} plantId={plantId}/>
                 </div>
                 {/*Plant Name and Description*/}
                 <div className="bg-[#F9F7EF]">
@@ -103,4 +105,6 @@ export default async function Details(props: PageProps<{plantId:string}>) {
         </>
     );
 }
+
+
 
