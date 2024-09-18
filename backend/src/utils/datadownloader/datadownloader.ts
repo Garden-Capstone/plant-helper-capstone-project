@@ -37,7 +37,7 @@ async function dataDownloader() {
             await insertPlant(plant)
         }
 
-    } while (page < 7)
+    } while (false)
 }
 
 dataDownloader().catch(error => console.error(error))
