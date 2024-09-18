@@ -6,13 +6,13 @@ import Questionnaire from "@/app/questions/questionnaire";
 import {Field, Form, Formik} from "formik";
 
 import ReactDOM from 'react-dom';
+import TestNav from "@/app/navcomponents/page";
 
 
 
 export default function Questions() {
     return (
         <>
-            <NavBar/>
             <Questionnaire/>
         </>
     )
