@@ -3,6 +3,8 @@
 import {SearchDetailsNav} from "@/app/components/navigation/SearchDetailsNav";
 import {fetchPlantByPlantId} from "@/utils/models/plant/plant.model";
 import {PageProps} from "@/utils/interfaces/NextComponent";
+import React from "react";
+import {Progress} from "@/app/user-plant/[plantId]/Progress";
 
 export default async function UserPlant(props: PageProps<{plantId:string}>) {
 
@@ -55,7 +57,7 @@ export default async function UserPlant(props: PageProps<{plantId:string}>) {
                     </p>
                 </div>
             </div>
-
+            <Progress/>
         </>
     )
 }
