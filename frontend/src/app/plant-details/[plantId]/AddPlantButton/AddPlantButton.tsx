@@ -2,7 +2,6 @@
 
 import {Session} from "@/utils/session.utils";
 import {useRouter} from "next/navigation";
-import {ToastError} from "@/app/plant-details/[plantId]/AddPlantButton/ToastError";
 
 export function AddPlantButton(props : {plantId : string, session : Session}) {
     const plantId = props.plantId
