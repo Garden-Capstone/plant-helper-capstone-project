@@ -1,10 +1,15 @@
-"use client"
+
 
 import PlantNavBar from "@/app/plant-locker/components/lockernavigation";
-import {UserPlant} from "@/app/plant-locker/components/userplant";
+import {UserPlantCard} from "@/app/plant-locker/components/userplant";
+import {fetchLockersByProfileId} from "@/utils/models/locker/locker.model";
+import {getSession, Session} from "@/utils/session.utils";
+import {redirect} from "next/navigation";
+import {Locker} from "@/utils/models/locker/locker.validator";
 
-export default function PlantLocker() {
+export default async function PlantLocker() {
 
+<<<<<<< HEAD
     const plantdata = [
         {
             image: 'https://images.unsplash.com/photo-1669392597221-bbfd4b6e13ff?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDN8fHJ1YmJlciUyMHBsYW50fGVufDB8fDB8fHww',
@@ -27,20 +32,26 @@ export default function PlantLocker() {
             name: 'Philodendron'
         }
     ]
+=======
+// @ts-ignore
+    const session: Session = await getSession();
+        if (session === null) {
+            redirect(`/login`)
+        }
+
+    const lockers : Locker[] = await fetchLockersByProfileId(session?.profile.profileId)
+>>>>>>> 9eee978ee0082e5a7be3be62d058bf21a165b830
 
     return (
         <>
             <PlantNavBar/>
             <section className='text-3xl flex flex-row p-6 gap-4 bg-[#3CB371] max-w-[18rem] mx-auto md:mx-14 mt-4 mb-4 border-green-600 border-2 rounded-2xl text-white'>
                 <h1 className='flex justify-center flex-wrap'>
-                    Welcome Back <span className='flex'>(username)!</span>
+                    Welcome Back <span className='flex'>{session.profile.profileUsername}</span>
                 </h1>
             </section>
             <div className='justify-center gap-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
-                <UserPlant userplant={plantdata[0]}/>
-                <UserPlant userplant={plantdata[1]}/>
-                <UserPlant userplant={plantdata[2]}/>
-                <UserPlant userplant={plantdata[3]}/>
+                {lockers.map(locker => <UserPlantCard key={locker.lockerProfileId} locker={locker}/>)}
             </div>
         </>
     )
