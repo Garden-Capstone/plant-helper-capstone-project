@@ -109,7 +109,7 @@ export function EditProfileFormContent(props: FormikProps<FormSchema>) {
 
 
     {/*This section is the code for the picture*/}
-    const [profilePic, setProfilePic] = useState(values.profileImage || "https://images.unsplash.com/photo-1611866759729-0cba525f9b45?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D/100");
+    const [profilePic, setProfilePic] = useState(values.profileImage || "https://images.unsplash.com/photo-1611866759729-0cba525f9b45?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D/100")
 
     {/*This code is for the picture selection*/}
     const handlePictureSelect = ({url}: { url: string }) => {
@@ -130,7 +130,7 @@ export function EditProfileFormContent(props: FormikProps<FormSchema>) {
         "https://images.unsplash.com/photo-1504280335916-c3e24a215b8b?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D/100",
 
         "https://images.unsplash.com/photo-1611866759729-0cba525f9b45?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D/100",
-    ];
+    ]
 
     return (
         <>
