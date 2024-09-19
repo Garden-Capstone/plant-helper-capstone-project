@@ -1,10 +1,10 @@
 
 
-import {SearchDetailsNav} from "@/app/components/navigation/SearchDetailsNav";
 import {fetchPlantByPlantId} from "@/utils/models/plant/plant.model";
 import {PageProps} from "@/utils/interfaces/NextComponent";
-import ClientNav from "@/app/navcomponents/ClientNav";
 import React from "react";
+import {Progress} from "@/app/user-plant/[plantId]/Progress";
+import {DisplayNav} from "@/app/navcomponents/DisplayNav";
 
 export default async function UserPlant(props: PageProps<{plantId:string}>) {
 
@@ -13,8 +13,8 @@ export default async function UserPlant(props: PageProps<{plantId:string}>) {
 
     return (
         <>
-            <ClientNav/>
-
+            <div className="bg-[#F9F7EF] min-h-screen">
+            <DisplayNav/>
             <section className='p-12 float-left'>
                 <img
                     src={plant.plantImageUrl}
@@ -61,7 +61,8 @@ export default async function UserPlant(props: PageProps<{plantId:string}>) {
                     </p>
                 </div>
             </div>
-
+    <Progress/>
+            </div>
         </>
     )
 }
